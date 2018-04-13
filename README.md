@@ -2,8 +2,8 @@
 Using GitHub to build personal blog, welcome you to correct me, thank you.
 
 ## 在线浏览Agxr的博客文件
-** 浏览器地址栏输入url: https://agxr.github.io/
-** 或者点击这里[agxr的个人博客](https://agxr.github.io/)
+- 浏览器地址栏输入url: **https://agxr.github.io/**
+- 或者点击这里**[agxr的个人博客](https://agxr.github.io/)**
 
 ## 拷贝自己的hexo博客文件
 
