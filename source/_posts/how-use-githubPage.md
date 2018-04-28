@@ -1,7 +1,6 @@
 ---
 title: how-use-githubPage
 comments: true
-toc: true
 date: 2018-04-13 17:29:29
 tags: github page hexo use
 ---
