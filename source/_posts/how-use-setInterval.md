@@ -1,7 +1,8 @@
 ---
 title: how-use-setInterval
-date: 2018-05-03 13:42:17
 tags: setInterval
+abbrlink: 35842
+date: 2018-05-03 13:42:17
 ---
 
 ### 本文将介绍如何在移动端中正确的使用setInterval

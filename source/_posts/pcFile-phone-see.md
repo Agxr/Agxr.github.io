@@ -1,7 +1,8 @@
 ---
 title: pcFile-phone-see
-date: 2018-04-28 16:38:49
 tags: browser-sync
+abbrlink: 61336
+date: 2018-04-28 16:38:49
 ---
 
 ### 本文介绍如何在手机上预览pc电脑上的文件

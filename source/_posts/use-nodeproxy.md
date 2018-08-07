@@ -1,7 +1,8 @@
 ---
 title: use-nodeproxy
-date: 2018-05-02 17:58:25
 tags: node-proxy
+abbrlink: 26254
+date: 2018-05-02 17:58:25
 ---
 
 ### 本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。

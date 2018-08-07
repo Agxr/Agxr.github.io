@@ -1,8 +1,11 @@
 ---
 title: how-use-githubPage
 comments: true
+tags:
+  - github-page
+  - hexo
+abbrlink: 45856
 date: 2018-04-13 17:29:29
-tags: github page hexo use
 ---
 hello!
 

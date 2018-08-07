@@ -1,8 +1,9 @@
 ---
 title: vue-event
-date: 2018-04-25 16:35:36
-tags: vue-$event
+tags: vue
 comments: true
+abbrlink: 6864
+date: 2018-04-25 16:35:36
 ---
 
 ### 本文将介绍在使用vue进行项目开发的时候，再给DOM加click之类的事件时，获取DOM事件源
