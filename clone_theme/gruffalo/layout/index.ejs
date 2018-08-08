@@ -1,0 +1,34 @@
+<%- partial('_partial/header', {
+    title: config.title,
+    hdClass: 'index-header'
+}) %>
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    <% page.posts.each(function(post){ %>
+        <li class="post-list-item fade">
+            <%- partial('_partial/index-item', {
+                post: post,
+                index: true
+            }) %>
+        </li>
+    <% }) %>
+    </ul>
+
+    <%- partial('_partial/paginator') %>
+
+</div>
+<% if (theme.excerpt_render) { %>
+<script type="text/javascript">
+(function() {
+  var oDiv = document.getElementsByClassName("post-content");
+  console.log(oDiv[0])
+  var oLen = oDiv.length
+  for (var i = 0; i < oLen; i++) {
+    if (oDiv[i].children.length >= 4) {
+      oDiv[i].removeChild(oDiv[i].children[3])
+    }
+  }
+})()
+</script>
+<% } %>
