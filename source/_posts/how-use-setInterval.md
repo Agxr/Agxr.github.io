@@ -1,6 +1,6 @@
 ---
 title: how-use-setInterval
-tags: setInterval
+tags: js
 abbrlink: 35842
 date: 2018-05-03 13:42:17
 ---

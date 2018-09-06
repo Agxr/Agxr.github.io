@@ -1,6 +1,8 @@
 ---
 title: pcFile-phone-see
-tags: browser-sync
+tags: 
+  - browser-sync
+  - js
 abbrlink: 61336
 date: 2018-04-28 16:38:49
 ---

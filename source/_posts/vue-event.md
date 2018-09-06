@@ -1,6 +1,8 @@
 ---
 title: vue-event
-tags: vue
+tags:
+  - vue
+  - event-object
 comments: true
 abbrlink: 6864
 date: 2018-04-25 16:35:36
