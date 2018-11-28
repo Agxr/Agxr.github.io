@@ -26,6 +26,8 @@ date: 2018-05-09 10:15:00
   git push origin development:development
 ```
 
+<!-- more -->
+
 - 2.git分支合并操作
 ![分支合并冲突命令窗口展示](http://i68.tinypic.com/vsgtmu.jpg)
 ![分支合并冲突文件内容展示](http://i68.tinypic.com/23m999i.jpg)
