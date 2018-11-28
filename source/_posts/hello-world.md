@@ -58,7 +58,11 @@ More info: [Generating](https://hexo.io/docs/generating.html)
     $ hexo deploy
     缩写 $ hexo d
 ```
-> 并行指令生成静态文件 + 部署网站
+- hexo d 失败的可能原因
+> 安装依赖包： npm install hexo-deployer-git --save  
+> 重新执行： $ hexo deploy 即可  
+
+> 并行指令生成静态文件 + 部署网站  
 **$ hexo g && hexo d**
 
 More info: [Deployment](https://hexo.io/docs/deployment.html)
