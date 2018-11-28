@@ -1,9 +1,11 @@
 ---
 title: sync-to-async
-tags: js
+tags: 
+  - js
+  - callback
 comments: true
 abbrlink: 16107
-categories: 随笔
+categories: js
 date: 2018-08-22 10:41:29
 ---
 Welcome

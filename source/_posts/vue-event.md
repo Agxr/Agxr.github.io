@@ -5,10 +5,12 @@ tags:
   - event-object
 comments: true
 abbrlink: 6864
+categories: vue
 date: 2018-04-25 16:35:36
 ---
 
 ### 本文将介绍在使用vue进行项目开发的时候，再给DOM加click之类的事件时，获取DOM事件源
+
 ```bash
 1.vue事件获取事件对象,vue获取事件源
     例：定义一事件 @click=targetEvn($event, tag)

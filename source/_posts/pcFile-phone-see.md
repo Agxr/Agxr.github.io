@@ -1,10 +1,11 @@
 ---
-title: pcFile-phone-see
+title: browser-sync
 tags: 
   - browser-sync
   - js
 abbrlink: 61336
-date: 2018-04-28 16:38:49
+categories: node
+date: 2018-05-01 11:38:49
 ---
 
 ### 本文介绍如何在手机上预览pc电脑上的文件
@@ -14,6 +15,6 @@ date: 2018-04-28 16:38:49
 1.全局安装browser-sync
     npm install -g browser-sync
 2.打开要执行的项目 (快捷键 shift+右键)
-    browser-sync start --server
-这个时候不需要用browser-sync提供的ip，用自己本机pc的ip+端口号即可访问，同时也可以在手机上进行访问
+    browser-sync start --server -port 3032
+这个时候不需要用browser-sync提供的ip，用自己 本机pc的ip + 端口号 + 要访问的文件路径 即可访问，同时也可以在手机上进行访问
 ```
