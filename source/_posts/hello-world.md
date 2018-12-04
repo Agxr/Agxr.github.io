@@ -11,6 +11,7 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 ## Quick Start
 
 ### 利用hexo搭建基于github的个人博客
+
 ```bash
 1.安装hexo脚手架
     $ npm install -g hexo-cli
@@ -58,7 +59,9 @@ More info: [Generating](https://hexo.io/docs/generating.html)
     $ hexo deploy
     缩写 $ hexo d
 ```
+
 - hexo d 失败的可能原因
+
 > 安装依赖包： npm install hexo-deployer-git --save  
 > 重新执行： $ hexo deploy 即可  
 

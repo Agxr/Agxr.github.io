@@ -9,10 +9,18 @@ categories: vue
 date: 2018-04-22 12:35:00
 ---
 
+### vue-cli3.x+axios
 
-#### 一、安装axios和qs 依赖包 
-#### 二、配置 axios 全局变量
-  在main.js加上依赖的引入
+##### 一、安装axios和qs 依赖包 
+
+> npm install axios --save-dev
+
+> npm install --save-dev axios vue-axios qs  
+
+##### 二、配置 axios 全局变量
+
+- 2-1）在main.js加上依赖的引入
+
 ```bash
 import qs from 'qs'
 import common from '../public/js/common'
@@ -23,7 +31,8 @@ Vue.prototype.$qs=qs
 
 <!-- more -->
 
-在src根目录创建一个 vue.config.js 的文件，这个是因为 cli-3 和 cli-2 创建项目的结构不同。
+- 2-2）在src根目录创建一个 vue.config.js 的文件，这个是因为 cli-3 和 cli-2 创建项目的结构不同。
+
 ```javascript
 // vue.config.js 配置说明
 // 这里只列一部分，具体配置惨考文档啊
@@ -90,7 +99,9 @@ module.exports = {
     }
 }
 ```
-#### 三、用法
+
+##### 三、用法
+
 ```javascript
 getData() {
     var self = this;
@@ -107,8 +118,11 @@ getData() {
     });
 },
 ```
-#### 四、axios 几种用法
-1：GET
+
+##### 四、axios 几种用法
+
+- 4-1）GET  
+
 ```javascript
 // Make a request for a user with a given ID
 axios.get('/user?ID=12345')
@@ -132,7 +146,9 @@ axios.get('/user', {
     console.log(error);
   });
 ```
-2：POST
+
+- 4-2）POST    
+
 ```javascript
  axios.post('/user', {
     firstName: 'Fred',
@@ -145,7 +161,9 @@ axios.get('/user', {
     console.log(error);
   });
 ```
-3：通用
+
+- 4-3）通用
+
 ```javascript
 axios({
   method:'get',
@@ -155,10 +173,14 @@ axios({
   response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
 });
 ```
-4：axios地址
->https://www.npmjs.com/package/axios
-#### 五、表单提交 
-表单提交用QS
+
+- 4-4）axios[地址](https://www.npmjs.com/package/axios)
+
+
+##### 五、表单提交 
+
+- 5-1）表单提交用QS
+
 ```javascript
 this.$http({
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
@@ -176,9 +198,12 @@ this.$http({
         console.log(error);
     });
 ```
-axios请求加上下面两句
+
+- 5-2）axios请求加上下面两句
+
 ```javascript
   headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
   transformRequest: [data => self.$qs.stringify(data)],
 ```
+
 > 转自[vue cli-3 配置axios 跨域请求和表单提交](https://blog.csdn.net/qq_36306590/article/details/81746897)

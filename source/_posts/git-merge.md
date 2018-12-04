@@ -45,7 +45,9 @@ Please, commit your changes or stash them before you can merge.
 ```
 
 - 2.git冲突文件展示  
+
 ![git冲突图](http://i63.tinypic.com/i1xsew.jpg)
+
 ```bash
 发现文件里出现
   “<<<<<<< HEAD”
@@ -57,7 +59,9 @@ Please, commit your changes or stash them before you can merge.
 - 其中“<<<<<<< HEAD” 和 “=====”之间的内容是 本地修改的内容，“====” 和“>>>>>>> log_id” 之间的内容就是 pull下来的内容。
 - “<<<<<<< ” 与 “=======” 之间的内容为本地内容(local)，“=======” 和 “>>>>>>>” 之间的内容为拉取下来的代码(即：仓库里面的代码)
 ```
+
 - 3.git正常提交冲突后的解决方法
+
 > 像这样先add等push时有冲突再解决的操作，是为了保证自己修改的本地代码不会消失（已经commit过了），就是担心自己修改的代码因为git误操作在拉取等时候被覆盖而丢失，这样就白干了，所以先commit，等push时有冲突再说。 --大佬这么教育我的  
 
 ```bash
@@ -125,6 +129,7 @@ Please, commit your changes or stash them before you can merge.
 ```
 
 - 4.强制提交就是干
+
 ```bash
 1、强推
     > git push -f

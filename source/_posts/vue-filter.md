@@ -15,6 +15,7 @@ date: 2018-04-23 13:10:36
 ##### Vue2 全局过滤器（vue-cli）
 
 - 1.先看官方简介：当前组件注册
+
 ```javascript
 export default {
   data () {
@@ -30,11 +31,13 @@ export default {
   }
 }
 ```
+
 > 但是我们做项目来说，大部分的过滤器是要全局使用的，不会每每用到就在组件里面去写，嗯，还是抽成全局的会更好些。  
 
 <!-- more -->
 
 - 2.全局注册：（官网: https://cn.vuejs.org/v2/api/#filters）
+
 ```javascript
 // 注册
 Vue.filter('my-filter', function (value) {
@@ -44,7 +47,8 @@ Vue.filter('my-filter', function (value) {
 // getter，返回已注册的过滤器
 var myFilter = Vue.filter('my-filter')
 ```
-> 当项目所用到的过滤器比较多时，就想试着把所有的方法定义在一个文件里面导出，嗯，毕竟还是有分点层次的。  
+
+> 当项目所用到的过滤器比较多时，就想试着把所有的方法定义在一个文件里面导出，嗯，毕竟还是有分点层次的。    
 
 ```javascript
 // /src/common/filters/custom.js文件

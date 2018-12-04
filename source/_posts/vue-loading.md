@@ -13,6 +13,7 @@ date: 2018-04-24 13:30:10
 ### vue项目加载数据时 loding图
 
 - 1.一般项目中，有时候会要求，你在数据请求的时候显示一张gif图片，然后数据加载完后，消失。这个，一般只需要在封装的axios中写入js事件即可。当然，我们首先需要在app.vue中，加入此图片。如下：
+
 ```javascrpt
 <template>
   <div id="app">
@@ -55,6 +56,7 @@ date: 2018-04-24 13:30:10
 ```
 
 - 2.这里的fetchLoading是存在vuex里面的一个变量。在store/modules/common.js里需要如下定义：
+
 ```javascript
 /* 此js文件用于存储公用的vuex状态 */
 import api from './../../fetch/api'
@@ -84,6 +86,7 @@ const mutations = {
 ```
 
 - 3.loading组件如下：
+
 ```javascript
 <template>
   <div class="loading">
@@ -119,7 +122,8 @@ const mutations = {
 </style>
 ```
 
-- 4.最后在fetch/api.js里封装的axios里写入判断loading事件即可：如下
+- 4.最后在fetch/api.js里封装的axios里写入判断loading事件即可。如下：
+
 ```javascript
 // axios的请求时间
 let axiosDate = new Date()
@@ -155,7 +159,5 @@ export default {
   }
 }
 ```
-
-
 
 - 参考博客：[vue项目加载数据时 loding图--- 参考博客文章](http://blog.csdn.net/zhaohaixin0418/article/details/73459662)

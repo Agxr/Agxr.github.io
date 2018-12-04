@@ -8,7 +8,9 @@ categories: node
 date: 2018-05-01 11:38:49
 ---
 
+
 ### 本文介绍如何在手机上预览pc电脑上的文件
+
 - 参考链接---[Browsersync能让浏览器实时、快速响应您的文件更改，同时在PC、平板、手机等设备下进项调试。](http://www.browsersync.cn/#install)
 
 ```bash

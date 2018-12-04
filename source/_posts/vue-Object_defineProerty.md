@@ -19,6 +19,7 @@ date: 2018-04-26 10:47:25
 本文是根据作者源码，摘取出来的  
 
 - 1.本文将实现什么
+
 > 正如上一篇许下的承诺一样，本文要实现一个 $wacth 
 
 <!-- more -->
@@ -39,6 +40,7 @@ setTimeout(()=>{
 > 为了帮助大家理清思路。。我们就做最简单的实现。。只考虑对象不考虑数组  
 
 - 2.实现 observer
+
 > 思路：我们知道Object.defineProperty的特性了，  
 我们就利用它的set和get。。我们将要observe的对象，  
 通过递归，将它所有的属性，包括子属性的属性，都给加上set和get，  
@@ -80,6 +82,7 @@ export function observe (value, vm) {
   return new Observer(value)
 }
 ```
+
 > 代码很简单，就给每个属性（包括子属性）都加上get/set，  
 这样的话，这个对象的，有任何赋值，就会触发set方法。。  
 所以，我们是不是应该写一个消息－订阅器呢？这样的话，  
@@ -87,6 +90,7 @@ export function observe (value, vm) {
 就会怎样？。。。对咯。。收到消息。。。触发回调。  消息－订阅器
 
 - 3.消息－订阅器
+
 > 很简单，我们维护一个数组，，这个数组，就放订阅着，一旦触发notify，  
 订阅者就调用自己的update方法  
 
@@ -103,6 +107,7 @@ export default class Dep {
   }
 }
 ```
+
 > 所以，每次set函数，调用的时候，我们是不是应该，触发notify，对吧。所以
 我们把代码补充完整  
 
@@ -126,10 +131,12 @@ export function defineReactive (obj, key, val) {
   })
 }
 ```
+
 > 那么问题来了。。谁是订阅者。。对，是Watcher。。一旦 dep.notify()  
 就遍历订阅者，也就是Watcher，并调用他的update()方法  
 
 - 4.实现一个 Watcher
+
 > 我们想象这个Watcher，应该用什么东西。update方法，嗯这个毋庸置疑，  
 还有呢，  
 
@@ -272,8 +279,6 @@ export default class Vue {
 很多bug，本文主要目的是展示整个工作流，帮助读者理解。。
 代码在https://github.com/georgebbbb...，
 我是一万个不想展示自己代码。。因为很多槽点，还请见谅\
-
-
 
 ---  
 - 参考文章：[vue 源码分析之如何实现 observer 和 watcher](https://segmentfault.com/a/1190000004384515)

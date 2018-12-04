@@ -8,7 +8,7 @@ abbrlink: 16107
 categories: js
 date: 2018-08-22 10:41:29
 ---
-Welcome
+
 
 - 写js逻辑的，特别是调api接口时，这个时候请求都是异步处理的，只能等请求完毕才能做接下来的渲染处理，这个时候就设计到如何将异步问题转为同步问题
 
@@ -27,7 +27,11 @@ callback(function (res) {
   console.log(res)
 }, newData)
 ```
-- 
+
+<!-- more -->
+
+- ES6之Promise
+
 ```javascript
 // 使用Promise
 new Promise(function (resolve, reject) {
@@ -40,4 +44,4 @@ new Promise(function (resolve, reject) {
 })
 ```
 
-<!-- more -->
+
