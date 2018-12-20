@@ -94,7 +94,7 @@ toc:
   list_number: true  # 是否显示数字排序
 
 # 文章页留言内容，hexo中所有变量及辅助函数等均可调用，具体请查阅 hexo.io
-postMessage: 欢迎您阅读我的博客，您有好的建议或意见可以留言给我。：<a href="https://agxr.github.io" target="_blank" rel="external">https://agxr.github.io</a>
+postMessage: 欢迎您阅读我的博客，您有好的建议或意见可以留言给我。：<a href="https://agxr.gitlab.io/" target="_blank" rel="external">https://agxr.gitlab.io/</a>
 
 # 站长统计，如要开启，输入CNZZ站点id，如 cnzz: 1255152447
 cnzz: false
