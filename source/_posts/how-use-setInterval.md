@@ -1,5 +1,5 @@
 ---
-title: how-use-setInterval
+title: use-setInterval
 tags: js
 abbrlink: 35842
 date: 2018-05-04 13:42:17

@@ -1,5 +1,5 @@
 ---
-title: how-use-githubPage
+title: use-githubPage-hexo
 comments: true
 tags:
   - github-page

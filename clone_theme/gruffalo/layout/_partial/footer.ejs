@@ -12,10 +12,30 @@
         <p><span><%-config.author %> &copy; <%if (theme.since_year && theme.since_year < date(new Date(), 'YYYY')) {%><%- theme.since_year %> - <%}%><%- date(new Date(), 'YYYY') %></span>
             <span>
                 <% if(theme.ICP_license) {%>
-                <a href="http://www.miitbeian.gov.cn/" target="_blank"><%- theme.ICP_license %></a><br>
+                <a href="http://www.miitbeian.gov.cn/" target="_blank"><%- theme.ICP_license %></a>
                 <% } %>
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/dearzoe/hexo-theme-gruffalo" target="_blank">gruffalo</a>
             </span>
+            <span id="runtime_span" class="runtime_span"></span>
+            <!-- 全局注入js，当前网站运行时间 -->
+            <script type="text/javascript">
+            function show_runtime(){
+              window.setTimeout("show_runtime()",1000);
+              X=new Date("03/13/2018 00:00:00");
+              Y=new Date();
+              T=(Y.getTime()-X.getTime());
+              M=24*60*60*1000;
+              a=T/M;A=Math.floor(a);
+              b=(a-A)*24;B=Math.floor(b);
+              c=(b-B)*60;C=Math.floor((b-B)*60);
+              D=Math.floor((c-C)*60);
+              runtime_span.innerHTML="—— 本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒 ——";
+            }
+            show_runtime();
+            </script>
+            <!-- END 全局注入js，当前网站运行时间 -->
+        </p>
+        <p>
+            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/dearzoe/hexo-theme-gruffalo" target="_blank">gruffalo</a>
         </p>
     </div>
 </footer>

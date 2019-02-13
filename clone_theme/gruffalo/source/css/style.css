@@ -2951,6 +2951,7 @@ hr,
 .footer {
   color: #222;
   background: #fff;
+  padding-top: 16px;
 }
 .footer p {
   margin: 0;
@@ -2969,7 +2970,7 @@ hr,
   border-bottom: 1px solid rgba(255, 255, 255, 0.7);
 }
 .footer .top {
-  padding: 16px 16px 0;
+  padding: 0 16px;
   background: #fff;
 }
 .footer .top .rss {
@@ -2984,10 +2985,18 @@ hr,
   text-decoration: none;
 }
 .footer .bottom {
-  padding: 16px;
+  padding: 0 16px 16px;
 }
 a[title="站长统计"] {
   display: none;
+}
+@media screen and (max-width: 760px) {
+  .runtime_span {
+    display: block;
+  }
+  .footer p .runtime_span::before {
+    display: none;
+  }
 }
 @media screen and (max-width: 1240px) {
   #menu-off {
