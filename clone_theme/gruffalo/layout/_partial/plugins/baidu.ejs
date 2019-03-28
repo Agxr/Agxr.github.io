@@ -1,7 +1,14 @@
 <% if (theme.baidu_tongji){ %>
 <!-- Baidu Tongji -->
-<script>var _hmt = _hmt || []</script>
-<script async src="//hm.baidu.com/hm.js?<%- theme.baidu_tongji %>"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?<%- theme.baidu_tongji %>";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 <!-- End Baidu Tongji -->
 <% } %>
 
