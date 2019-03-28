@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?df88a07402a1eea92f95c45876223a3e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="baidu-site-verification" content="XQTL8zP2AE">
+    <title>BoyGXR Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="boyGXR 葛雪瑞 web 前端 javascript js">
+    <meta name="description" content="初入前端，正在努力学习前端知识。前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
+<meta name="keywords" content="boyGXR 葛雪瑞 web 前端 javascript js">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BoyGXR Blog">
+<meta property="og:url" content="https://agxr.github.io/page/2/index.html">
+<meta property="og:site_name" content="BoyGXR Blog">
+<meta property="og:description" content="初入前端，正在努力学习前端知识。前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
+<meta property="og:locale" content="Chinese">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BoyGXR Blog">
+<meta name="twitter:description" content="初入前端，正在努力学习前端知识。前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
+    
+        <link rel="alternate" type="application/atom+xml" title="BoyGXR Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/boygxricon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/fireIcon.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">BoyGXR</h5>
+          <a href="mailto:itboygxr520@163.com" title="itboygxr520@163.com" class="mail">itboygxr520@163.com</a>
+          <div style="margin-top: 5px; margin-bottom: 5px; font-size: 92%"><b>文章共 14 篇，约 10.1k 字</b></div>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                
+                  <i class="icon icon-lg icon-home"></i>
+                
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                
+                  <i class="icon icon-lg icon-archives"></i>
+                
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                
+                  <i class="icon icon-lg icon-tags"></i>
+                
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                
+                  <i class="icon icon-lg icon-th-list"></i>
+                
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                
+                  <i class="icon icon-lg icon-github-alt"></i>
+                
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Agxr" target="_blank" >
+                
+                  <i class="icon icon-lg icon-github"></i>
+                
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div id="headerTitle" class="flex-col header-title ellipsis">BoyGXR Blog</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="global.search_input_hint">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="themeToggle" title="夜间模式">
+            <i class="icon icon-lg icon-moon-o"></i>
+        </a>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">BoyGXR Blog</h1>
+        <h5 class="subtitle">
+            
+                
+            
+        </h5>
+    </div>
+
+    <div class="grass fade-scale">
+
+    </div>
+
+    
+
+
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-vue-cli3-axios"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-04-22 12:35:00" datetime="2018-04-22T04:35:00.000Z"  itemprop="datePublished">2018-04-22</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/">vue</a></li></ul>
+
+
+
+        <span style="color: dodgerblue">
+            约 1,016 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 12.5 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/04/22/vue-cli3-axios/">vue-cli3.x+axios</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h3 id="vue-cli3-x-axios"><a href="#vue-cli3-x-axios" class="headerlink" title="vue-cli3.x+axios"></a>vue-cli3.x+axios</h3><h5 id="一、安装axios和qs-依赖包"><a href="#一、安装axios和qs-依赖包" class="headerlink" title="一、安装axios和qs 依赖包"></a>一、安装axios和qs 依赖包</h5><blockquote>
+<p>npm install axios –save-dev</p>
+</blockquote>
+<blockquote>
+<p>npm install –save-dev axios vue-axios qs  </p>
+</blockquote>
+<h5 id="二、配置-axios-全局变量"><a href="#二、配置-axios-全局变量" class="headerlink" title="二、配置 axios 全局变量"></a>二、配置 axios 全局变量</h5><ul>
+<li>2-1）在main.js加上依赖的引入</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import qs from <span class="string">'qs'</span></span><br><span class="line">import common from <span class="string">'../public/js/common'</span></span><br><span class="line">import Axios from <span class="string">'axios'</span></span><br><span class="line">Vue.prototype.<span class="variable">$http</span> = Axios</span><br><span class="line">Vue.prototype.<span class="variable">$qs</span>=qs</span><br></pre></td></tr></table></figure>
+    
+
+        <!--<a href="/2018/04/22/vue-cli3-axios/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/04/22/vue-cli3-axios/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/axios/">axios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-vue-learn-document"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-04-21 16:35:36" datetime="2018-04-21T08:35:36.000Z"  itemprop="datePublished">2018-04-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/">vue</a></li></ul>
+
+
+
+        <span style="color: dodgerblue">
+            约 657 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 7.5 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/04/21/vue-learn-document/">vue-learn</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h3 id="vue学习"><a href="#vue学习" class="headerlink" title="vue学习"></a>vue学习</h3><ul>
+<li><p>1.vue-resource获取接口数据的方法，参考：<a href="https://www.cnblogs.com/Juphy/p/7073027.html" target="_blank" rel="noopener">Vue基础知识之vue-resource和axios</a></p>
+</li>
+<li><p>2.vue-cli搭建的架子里面加入mock假数据，<a href="https://www.jianshu.com/p/ccd53488a61b" target="_blank" rel="noopener">参考文章</a></p>
+</li>
+<li><p>3.关于Vue实例的生命周期created和mounted的区别…<a href="http://www.zhimengzhe.com/Javascriptjiaocheng/236707.html" target="_blank" rel="noopener">参考文章</a></p>
+</li>
+<li><p>4.Vue如何使用vue-awesome-swiper实现轮播效果…<a href="https://www.cnblogs.com/zishang91/p/7600006.html" target="_blank" rel="noopener">参考文章</a></p>
+</li>
+</ul>
+    
+
+        <!--<a href="/2018/04/21/vue-learn-document/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/04/21/vue-learn-document/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-use-githubpage-hexo"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-04-13 17:29:29" datetime="2018-04-13T09:29:29.000Z"  itemprop="datePublished">2018-04-13</time>
+
+        
+
+
+        <span style="color: dodgerblue">
+            约 846 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 7.5 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/04/13/use-githubpage-hexo/">use-githubPage-hexo</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h3 id="本文将介绍如何利用hexo脚手架搭建基于github的个人博客"><a href="#本文将介绍如何利用hexo脚手架搭建基于github的个人博客" class="headerlink" title="本文将介绍如何利用hexo脚手架搭建基于github的个人博客"></a>本文将介绍如何利用hexo脚手架搭建基于github的个人博客</h3><h3 id="个人博客搭建之github-hexo"><a href="#个人博客搭建之github-hexo" class="headerlink" title="个人博客搭建之github+hexo"></a>个人博客搭建之github+hexo</h3><h4 id="前篇：准备工作"><a href="#前篇：准备工作" class="headerlink" title="前篇：准备工作"></a>前篇：准备工作</h4><ul>
+<li>项目开始前先确保已安装 nodejs-<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">nodejs下载官网</a> 和 git-<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git下载官网</a></li>
+</ul>
+<h4 id="一、github篇"><a href="#一、github篇" class="headerlink" title="一、github篇"></a>一、github篇</h4><ul>
+<li>1.注册github账号</li>
+</ul>
+    
+
+        <!--<a href="/2018/04/13/use-githubpage-hexo/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/04/13/use-githubpage-hexo/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-page/">github-page</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-hello-world"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-03-13 17:29:29" datetime="2018-03-13T09:29:29.000Z"  itemprop="datePublished">2018-03-13</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hello-word/">hello word</a></li></ul>
+
+
+
+        <span style="color: dodgerblue">
+            约 245 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 2.5 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/03/13/hello-world/">Hello World</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="利用hexo搭建基于github的个人博客"><a href="#利用hexo搭建基于github的个人博客" class="headerlink" title="利用hexo搭建基于github的个人博客"></a>利用hexo搭建基于github的个人博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.安装hexo脚手架</span><br><span class="line">    $ npm install -g hexo-cli</span><br><span class="line">2.利用hexo脚手架生成博客项目</span><br><span class="line">    $ hexo init &lt;ProjectName&gt;</span><br><span class="line">    $ <span class="built_in">cd</span> &lt;ProjectName&gt;</span><br><span class="line">    $ npm install</span><br><span class="line">3.本地运行hexo项目.启动服务器。默认情况下，访问网址为： http://localhost:4000/。</span><br><span class="line">    $ hexo server</span><br></pre></td></tr></table></figure>
+    
+
+        <!--<a href="/2018/03/13/hello-world/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/03/13/hello-world/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hello-Word/">Hello Word</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+    </ul>
+
+    
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </div>
+</nav>
+
+
+</div>
+
+<script type="text/javascript">
+(function() {
+  var oDiv = document.getElementsByClassName("post-content");
+  console.log(oDiv[0])
+  var oLen = oDiv.length
+  for (var i = 0; i < oLen; i++) {
+    if (oDiv[i].children.length >= 4) {
+      oDiv[i].removeChild(oDiv[i].children[3])
+    }
+  }
+})()
+</script>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <!-- <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>footer.license</span>
+        </p> -->
+    </div>
+    <div class="bottom">
+        <p><span>BoyGXR &copy; 2018 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">冀ICP备19002146号</a>
+                
+            </span>
+            <span id="runtime_span" class="runtime_span"></span>
+            <!-- 全局注入js，当前网站运行时间 -->
+            <script type="text/javascript">
+            function show_runtime(){
+              window.setTimeout("show_runtime()",1000);
+              X=new Date("03/13/2018 00:00:00");
+              Y=new Date();
+              T=(Y.getTime()-X.getTime());
+              M=24*60*60*1000;
+              a=T/M;A=Math.floor(a);
+              b=(a-A)*24;B=Math.floor(b);
+              c=(b-B)*60;C=Math.floor((b-B)*60);
+              D=Math.floor((c-C)*60);
+              runtime_span.innerHTML="—— 本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒 ——";
+            }
+            show_runtime();
+            </script>
+            <!-- END 全局注入js，当前网站运行时间 -->
+        </p>
+        <p>
+            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/dearzoe/hexo-theme-gruffalo" target="_blank">gruffalo</a>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://agxr.github.io/page/2/&title=BoyGXR Blog&pic=https://agxr.github.io/img/fireIcon.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://agxr.github.io/page/2/&title=BoyGXR Blog&source=初入前端，正在努力学习前端知识。前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,De..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://agxr.github.io/page/2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=BoyGXR Blog&url=https://agxr.github.io/page/2/&via=https://agxr.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://agxr.github.io/page/2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxElEQVR42u3aUa6DMAwEwN7/0rwDVMDaJil6mnxVooVJP1axzecTr+NrfV89+9X13T4rFi4u7ph7XK6zB1QfeXaH3ICLi7ufex1DZ+F1HWp5/BWiEBcX95XcPHSSO+Di4v4/bh5trwgyXFzcIjcpfqo9iqTgWVir4eLiDrh5U2Pd5yX9XVxc3Bb3KK6nttFbuLi4e7h5oCSFTbVF0nwuLi7uYm61MZGPSXqsmzvj4uL+iFtti1SvJq933JzIcHFxt3DLP7uEVsMuvw8uLu6vuPPu5eR4dDOgxcXF3citFj/5wSgJqeSPGNVquLi4RW4eK5NxSO/wdNPfxcXFXcbtNSyuQ60af4WmDC4u7hZu76DTa4LkYVeYCePi4i7jTmIoL2Pmr4fi4uLu5OaP771iNdleoVbDxcVdwO0NTSffTw5D5eIHFxd3Abc6WK2OTKpBWb+Mi4s75faGIuUWxvjog4uLu5M7eQ3rqWZo0pAtbwYXF3fM7T0sL1fyTUb/KC4u7kZubwIzaZqMRim4uLgv4/Zan5MSK2qY4uLivoz7WEglLVRcXNyN3HwgWg216rZvNoaLi7uFW46SAFql9LaEi4u7gPsHq1tI51er31sAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, MOON: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去干哈？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '●_● 你肥来啦~';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+<!-- 全局注入js -->
+<script type="text/javascript">
+  var twoIcon = document.getElementsByClassName('fade-scale');
+  var iconLen = twoIcon.length;
+  var pathName = window.location.pathname;
+  // console.log(pathName.length)
+  if (pathName.split('/').length > 3) {
+    for (var i = 0; i < iconLen; i++) {
+      twoIcon[i].style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>

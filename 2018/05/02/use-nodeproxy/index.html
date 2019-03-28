@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?df88a07402a1eea92f95c45876223a3e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="baidu-site-verification" content="XQTL8zP2AE">
+    <title>use-nodeproxy | BoyGXR Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="node,node-http-proxy">
+    <meta name="description" content="本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。 首先放两篇借用参考文章—-\\参考文章1：node.js搭建本地http服务器参考了shawn.xie的—————–\\参考文章2  项目开始： 第一步：npm初始    npm init     第二步：安装node-http-proxy模块    npm install http">
+<meta name="keywords" content="node,node-http-proxy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="use-nodeproxy">
+<meta property="og:url" content="https://agxr.github.io/2018/05/02/use-nodeproxy/index.html">
+<meta property="og:site_name" content="BoyGXR Blog">
+<meta property="og:description" content="本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。 首先放两篇借用参考文章—-\\参考文章1：node.js搭建本地http服务器参考了shawn.xie的—————–\\参考文章2  项目开始： 第一步：npm初始    npm init     第二步：安装node-http-proxy模块    npm install http">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://agxr.github.io/2018/05/02/use-nodeproxy/node-proxy-project.png">
+<meta property="og:updated_time" content="2019-03-28T05:54:13.564Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="use-nodeproxy">
+<meta name="twitter:description" content="本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。 首先放两篇借用参考文章—-\\参考文章1：node.js搭建本地http服务器参考了shawn.xie的—————–\\参考文章2  项目开始： 第一步：npm初始    npm init     第二步：安装node-http-proxy模块    npm install http">
+<meta name="twitter:image" content="https://agxr.github.io/2018/05/02/use-nodeproxy/node-proxy-project.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="BoyGXR Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/boygxricon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/fireIcon.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">BoyGXR</h5>
+          <a href="mailto:itboygxr520@163.com" title="itboygxr520@163.com" class="mail">itboygxr520@163.com</a>
+          <div style="margin-top: 5px; margin-bottom: 5px; font-size: 92%"><b>文章共 14 篇，约 10.1k 字</b></div>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                
+                  <i class="icon icon-lg icon-home"></i>
+                
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                
+                  <i class="icon icon-lg icon-archives"></i>
+                
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                
+                  <i class="icon icon-lg icon-tags"></i>
+                
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                
+                  <i class="icon icon-lg icon-th-list"></i>
+                
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                
+                  <i class="icon icon-lg icon-github-alt"></i>
+                
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Agxr" target="_blank" >
+                
+                  <i class="icon icon-lg icon-github"></i>
+                
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div id="headerTitle" class="flex-col header-title ellipsis">use-nodeproxy</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="global.search_input_hint">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="themeToggle" title="夜间模式">
+            <i class="icon icon-lg icon-moon-o"></i>
+        </a>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">use-nodeproxy</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-02T09:58:25.000Z" itemprop="datePublished" class="page-time">
+  2018-05-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    <div class="grass fade-scale">
+
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。"><span class="post-toc-number">1.</span> <span class="post-toc-text">本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#项目开始："><span class="post-toc-number">1.1.</span> <span class="post-toc-text">项目开始：</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-use-nodeproxy"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">use-nodeproxy</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-02 17:58:25" datetime="2018-05-02T09:58:25.000Z"  itemprop="datePublished">2018-05-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。"><a href="#本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。" class="headerlink" title="本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。"></a>本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。</h3><ul>
+<li>首先放两篇借用参考文章—-\\参考文章1：<a href="http://www.cnblogs.com/shawn-xie/archive/2013/06/06/3121173.html" target="_blank" rel="noopener">node.js搭建本地http服务器参考了shawn.xie的</a>—————–\\<a href="http://www.jb51.net/article/91627.htm" target="_blank" rel="noopener">参考文章2</a></li>
+</ul>
+<h4 id="项目开始："><a href="#项目开始：" class="headerlink" title="项目开始："></a>项目开始：</h4><ul>
+<li>第一步：npm初始</li>
+</ul>
+<blockquote>
+<p> npm init  </p>
+</blockquote>
+<ul>
+<li>第二步：安装node-http-proxy模块</li>
+</ul>
+<blockquote>
+<p> npm install http-proxy –save-dev  </p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li>第三步：项目的结构</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./node-proxy-project.png" alt="nodeProxy项目结构" title="">
+                </div>
+                <div class="image-caption">nodeProxy项目结构</div>
+            </figure>
+<ul>
+<li>第四步：proxy.js</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>),</span><br><span class="line">    url = <span class="built_in">require</span>(<span class="string">'url'</span>),</span><br><span class="line">    path=<span class="built_in">require</span>(<span class="string">'path'</span>),</span><br><span class="line">    fs=<span class="built_in">require</span>(<span class="string">'fs'</span>),</span><br><span class="line">    httpProxy = <span class="built_in">require</span>(<span class="string">'http-proxy'</span>),</span><br><span class="line">    mine=<span class="built_in">require</span>(<span class="string">'./mine'</span>).types;</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Create a proxy server with latency</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">var</span> proxy = httpProxy.createProxyServer(&#123;</span><br><span class="line">    <span class="comment">//target: 'http://xptest.tianxialashou.com.cn',   //接口地址</span></span><br><span class="line">    target: <span class="string">'https://api.douban.com'</span>,   <span class="comment">// 豆瓣api测试接口地址</span></span><br><span class="line">    <span class="comment">// 下面的设置用于https</span></span><br><span class="line">    <span class="comment">// ssl: &#123;</span></span><br><span class="line">    <span class="comment">//     key: fs.readFileSync('server_decrypt.key', 'utf8'),</span></span><br><span class="line">    <span class="comment">//     cert: fs.readFileSync('server.crt', 'utf8')</span></span><br><span class="line">    <span class="comment">// &#125;,</span></span><br><span class="line">    <span class="comment">// secure: false</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Listen for the `proxyRes` event on `proxy`.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">proxy.on(<span class="string">'proxyRes'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">proxyRes, req, res</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'RAW Response from the target'</span>, <span class="built_in">JSON</span>.stringify(proxyRes.headers, <span class="literal">true</span>, <span class="number">2</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Listen for the `open` event on `proxy`.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">proxy.on(<span class="string">'open'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">proxySocket</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// listen for messages coming FROM the target here</span></span><br><span class="line">  proxySocket.on(<span class="string">'data'</span>, hybiParseAndLogMessage);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Listen for the `close` event on `proxy`.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">proxy.on(<span class="string">'close'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">res, socket, head</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// view disconnected websocket connections</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Client disconnected'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> PORT = <span class="number">3000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Create your server that makes an operation that waits a while</span></span><br><span class="line"><span class="comment">// and then proxies the request</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pathname = url.parse(request.url).pathname;</span><br><span class="line">    <span class="comment">//var realPath = path.join("main-pages", pathname); // 指定根目录</span></span><br><span class="line">    <span class="keyword">var</span> realPath = path.join(<span class="string">"./"</span>, pathname);</span><br><span class="line">    <span class="built_in">console</span>.log(pathname);</span><br><span class="line">    <span class="built_in">console</span>.log(realPath);</span><br><span class="line">    <span class="keyword">var</span> ext = path.extname(realPath);</span><br><span class="line">    ext = ext ? ext.slice(<span class="number">1</span>) : <span class="string">'unknown'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断如果是接口访问，则通过proxy转发</span></span><br><span class="line">    <span class="keyword">if</span>(pathname.match(<span class="regexp">/\/v2\//</span>))&#123;</span><br><span class="line">        <span class="keyword">delete</span> request.headers.host;</span><br><span class="line">        proxy.web(request, response);</span><br><span class="line">        <span class="comment">// response.write("alksjdfklll-----------------------------------?????");</span></span><br><span class="line">        <span class="comment">// response.end();</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fs.exists(realPath, <span class="function"><span class="keyword">function</span> (<span class="params">exists</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!exists) &#123;</span><br><span class="line">            response.writeHead(<span class="number">404</span>, &#123;</span><br><span class="line">                <span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span></span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            response.write(<span class="string">"This request URL "</span> + pathname + <span class="string">" was not found on this server."</span>);</span><br><span class="line">            response.end();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            fs.readFile(realPath, <span class="string">"binary"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (err) &#123;</span><br><span class="line">                    response.writeHead(<span class="number">500</span>, &#123;</span><br><span class="line">                        <span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span></span><br><span class="line">                    &#125;);</span><br><span class="line">                    response.end(err);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">var</span> contentType = mine[ext] || <span class="string">"text/plain"</span>;</span><br><span class="line">                    response.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">                        <span class="string">'Content-Type'</span>: contentType</span><br><span class="line">                    &#125;);</span><br><span class="line">                    response.write(file, <span class="string">"binary"</span>);</span><br><span class="line">                    response.end();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(PORT);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Server runing at port: "</span> + PORT + <span class="string">"."</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第五步：mine.js</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by XXX on 2017/9/4.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">exports.types = &#123;</span><br><span class="line">    <span class="string">"css"</span>: <span class="string">"text/css"</span>,</span><br><span class="line">    <span class="string">"gif"</span>: <span class="string">"image/gif"</span>,</span><br><span class="line">    <span class="string">"html"</span>: <span class="string">"text/html"</span>,</span><br><span class="line">    <span class="string">"ico"</span>: <span class="string">"image/x-icon"</span>,</span><br><span class="line">    <span class="string">"jpeg"</span>: <span class="string">"image/jpeg"</span>,</span><br><span class="line">    <span class="string">"jpg"</span>: <span class="string">"image/jpeg"</span>,</span><br><span class="line">    <span class="string">"js"</span>: <span class="string">"text/javascript"</span>,</span><br><span class="line">    <span class="string">"json"</span>: <span class="string">"application/json"</span>,</span><br><span class="line">    <span class="string">"pdf"</span>: <span class="string">"application/pdf"</span>,</span><br><span class="line">    <span class="string">"png"</span>: <span class="string">"image/png"</span>,</span><br><span class="line">    <span class="string">"svg"</span>: <span class="string">"image/svg+xml"</span>,</span><br><span class="line">    <span class="string">"swf"</span>: <span class="string">"application/x-shockwave-flash"</span>,</span><br><span class="line">    <span class="string">"tiff"</span>: <span class="string">"image/tiff"</span>,</span><br><span class="line">    <span class="string">"txt"</span>: <span class="string">"text/plain"</span>,</span><br><span class="line">    <span class="string">"wav"</span>: <span class="string">"audio/x-wav"</span>,</span><br><span class="line">    <span class="string">"wma"</span>: <span class="string">"audio/x-ms-wma"</span>,</span><br><span class="line">    <span class="string">"wmv"</span>: <span class="string">"video/x-ms-wmv"</span>,</span><br><span class="line">    <span class="string">"xml"</span>: <span class="string">"text/xml"</span>,</span><br><span class="line">    <span class="string">"woff"</span>: <span class="string">"application/x-woff"</span>,</span><br><span class="line">    <span class="string">"woff2"</span>: <span class="string">"application/x-woff2"</span>,</span><br><span class="line">    <span class="string">"tff"</span>: <span class="string">"application/x-font-truetype"</span>,</span><br><span class="line">    <span class="string">"otf"</span>: <span class="string">"application/x-font-opentype"</span>,</span><br><span class="line">    <span class="string">"eot"</span>: <span class="string">"application/vnd.ms-fontobject"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第六步：html页面调用ajax</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  type: <span class="string">"GET"</span>,</span><br><span class="line">  url: <span class="string">"/v2/movie/subject/1764796"</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(response)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您阅读我的博客，您有好的建议或意见可以留言给我。：<a href="https://agxr.gitlab.io/" target="_blank" rel="external">https://agxr.gitlab.io/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://agxr.github.io">
+            <img src="/img/fireIcon.png" alt="BoyGXR">
+            BoyGXR
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-http-proxy/">node-http-proxy</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://agxr.github.io/2018/05/02/use-nodeproxy/&title=《use-nodeproxy》 — BoyGXR Blog&pic=https://agxr.github.io/img/fireIcon.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://agxr.github.io/2018/05/02/use-nodeproxy/&title=《use-nodeproxy》 — BoyGXR Blog&source=本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。
+首先放两篇借用参考文章—-\\参考文章..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://agxr.github.io/2018/05/02/use-nodeproxy/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《use-nodeproxy》 — BoyGXR Blog&url=https://agxr.github.io/2018/05/02/use-nodeproxy/&via=https://agxr.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://agxr.github.io/2018/05/02/use-nodeproxy/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/04/how-use-setInterval/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">use-setInterval</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/01/pcFile-phone-see/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">browser-sync</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 暂时写在这里引入，之后放在全局 -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "fwwOBmAhJuGhMQkwhQsSzi7U-gzGzoHsz",
+            appKey: "MlvA5m1dMLqCMI86mPxcyXrB",
+            avatar: "mm",
+            placeholder: "欢迎您的评论与建议",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+        window.onload = function () {
+            $(".vhead").each(function (i,v) {
+                //浏览器图标
+                if($(this).find(".vsys").eq(0).text().toUpperCase().includes('CHROME')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/chrome.svg"/>');
+                }else if($(this).find(".vsys").eq(0).text().toUpperCase().includes('UC')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/UC浏览器.svg"/>');
+                }else if($(this).find(".vsys").eq(0).text().toUpperCase().includes('OPERA')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/opera.svg"/>');
+                }
+                //系统图标
+                if($(this).find(".vsys").eq(1).text().toUpperCase().includes('WINDOWS')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/windows.svg"/>');
+                }else if($(this).find(".vsys").eq(1).text().toUpperCase().includes('APPLE')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/apple.svg"/>');
+                }else if($(this).find(".vsys").eq(1).text().toUpperCase().includes('LINUX')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/linux.svg"/>');
+                }
+            })
+        }
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你的支持
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wexin.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wexin.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label">换一个</span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <!-- <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>footer.license</span>
+        </p> -->
+    </div>
+    <div class="bottom">
+        <p><span>BoyGXR &copy; 2018 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">冀ICP备19002146号</a>
+                
+            </span>
+            <span id="runtime_span" class="runtime_span"></span>
+            <!-- 全局注入js，当前网站运行时间 -->
+            <script type="text/javascript">
+            function show_runtime(){
+              window.setTimeout("show_runtime()",1000);
+              X=new Date("03/13/2018 00:00:00");
+              Y=new Date();
+              T=(Y.getTime()-X.getTime());
+              M=24*60*60*1000;
+              a=T/M;A=Math.floor(a);
+              b=(a-A)*24;B=Math.floor(b);
+              c=(b-B)*60;C=Math.floor((b-B)*60);
+              D=Math.floor((c-C)*60);
+              runtime_span.innerHTML="—— 本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒 ——";
+            }
+            show_runtime();
+            </script>
+            <!-- END 全局注入js，当前网站运行时间 -->
+        </p>
+        <p>
+            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/dearzoe/hexo-theme-gruffalo" target="_blank">gruffalo</a>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://agxr.github.io/2018/05/02/use-nodeproxy/&title=《use-nodeproxy》 — BoyGXR Blog&pic=https://agxr.github.io/img/fireIcon.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://agxr.github.io/2018/05/02/use-nodeproxy/&title=《use-nodeproxy》 — BoyGXR Blog&source=本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。
+首先放两篇借用参考文章—-\\参考文章..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://agxr.github.io/2018/05/02/use-nodeproxy/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《use-nodeproxy》 — BoyGXR Blog&url=https://agxr.github.io/2018/05/02/use-nodeproxy/&via=https://agxr.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://agxr.github.io/2018/05/02/use-nodeproxy/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHElEQVR42u3aMXLDMAwEwPz/006bxvIdaGcsclV5NJLIdYEBQPz8xNfjz7Vy//qZ5K2lCwMD47aMx+WVPPNs4est5r+jFTEwMA5gJJtIwuKzt/J3r7/w9D4GBgZGmeTl6eNsXQwMDIyWkYfLrw64GBgYX89IithZAP26WhwDA+OGjLzr/v+/P3K+gYGBcSvGo7zaIDgLl/WuMDAwtmbMCtSkTF35zqxgxsDA2JUxC5TvHcVI/ogXdzAwMLZmRA33Uep2XQCvj268SDExMDA2YuQBMQ+17T+XsF+8hYGBcSSjTsUW2nCzMYuiiMXAwDiAkYfRlWGLJR4GBsbWjHaZlXRwJXEsjhAwMDC2Y6wUn+8qYotiNT/CxMDA2I5xvaFZ6vau79TTIhgYGNsxkpyxHdjKU7qkiC3WxcDA2JSRjHa1qVuy9TZxjIYtMDAwNmXM2mR5IjjDzwI6BgbGOYy8Wd8egraFa3ssgYGBcRojb429d/xraUwNAwPjAEaLaRv6bRjNDxgwMDDOYeTts3aZWRnchnIMDIyTGe2JYd4mWz8cxcDAOIHxKK+kPbdS4g6pGBgYWzNWjgzb7bat/3x0AwMD4wRGG2RXQudK+ljnjBgYGNsx8sCXP9O221Z2i4GBgdEG37wozZO/F1QMDAyMcoFZWTs7RsXAwDiHkRSxswGy/Pk8ZcTAwDiN8YleVju00R5CDA81MTAw7sf4BS17IuAlaktGAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, MOON: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去干哈？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '●_● 你肥来啦~';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+<!-- 全局注入js -->
+<script type="text/javascript">
+  var twoIcon = document.getElementsByClassName('fade-scale');
+  var iconLen = twoIcon.length;
+  var pathName = window.location.pathname;
+  // console.log(pathName.length)
+  if (pathName.split('/').length > 3) {
+    for (var i = 0; i < iconLen; i++) {
+      twoIcon[i].style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>

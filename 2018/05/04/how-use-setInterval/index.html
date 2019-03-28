@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?df88a07402a1eea92f95c45876223a3e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="baidu-site-verification" content="XQTL8zP2AE">
+    <title>use-setInterval | BoyGXR Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="js">
+    <meta name="description" content="本文将介绍如何在移动端中正确的使用setInterval 在正常情况下，使用setInterval就直接利用new Date() 出来的本地时间去进行计时，这在PC端并没有问题，关键是在移动端，特别是ios手机或者safari浏览器中，当当前含有设置setInterval的应用被home切到后台时，这个时候系统机制就将setInterval自动冻结了 下面给出一篇参考文章——-不会被 iOS 停掉">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="use-setInterval">
+<meta property="og:url" content="https://agxr.github.io/2018/05/04/how-use-setInterval/index.html">
+<meta property="og:site_name" content="BoyGXR Blog">
+<meta property="og:description" content="本文将介绍如何在移动端中正确的使用setInterval 在正常情况下，使用setInterval就直接利用new Date() 出来的本地时间去进行计时，这在PC端并没有问题，关键是在移动端，特别是ios手机或者safari浏览器中，当当前含有设置setInterval的应用被home切到后台时，这个时候系统机制就将setInterval自动冻结了 下面给出一篇参考文章——-不会被 iOS 停掉">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2019-03-28T05:54:13.564Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="use-setInterval">
+<meta name="twitter:description" content="本文将介绍如何在移动端中正确的使用setInterval 在正常情况下，使用setInterval就直接利用new Date() 出来的本地时间去进行计时，这在PC端并没有问题，关键是在移动端，特别是ios手机或者safari浏览器中，当当前含有设置setInterval的应用被home切到后台时，这个时候系统机制就将setInterval自动冻结了 下面给出一篇参考文章——-不会被 iOS 停掉">
+    
+        <link rel="alternate" type="application/atom+xml" title="BoyGXR Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/boygxricon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/fireIcon.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">BoyGXR</h5>
+          <a href="mailto:itboygxr520@163.com" title="itboygxr520@163.com" class="mail">itboygxr520@163.com</a>
+          <div style="margin-top: 5px; margin-bottom: 5px; font-size: 92%"><b>文章共 14 篇，约 10.1k 字</b></div>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                
+                  <i class="icon icon-lg icon-home"></i>
+                
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                
+                  <i class="icon icon-lg icon-archives"></i>
+                
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                
+                  <i class="icon icon-lg icon-tags"></i>
+                
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                
+                  <i class="icon icon-lg icon-th-list"></i>
+                
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                
+                  <i class="icon icon-lg icon-github-alt"></i>
+                
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Agxr" target="_blank" >
+                
+                  <i class="icon icon-lg icon-github"></i>
+                
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div id="headerTitle" class="flex-col header-title ellipsis">use-setInterval</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="global.search_input_hint">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="themeToggle" title="夜间模式">
+            <i class="icon icon-lg icon-moon-o"></i>
+        </a>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">use-setInterval</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-04T05:42:17.000Z" itemprop="datePublished" class="page-time">
+  2018-05-04
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    <div class="grass fade-scale">
+
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#本文将介绍如何在移动端中正确的使用setInterval"><span class="post-toc-number">1.</span> <span class="post-toc-text">本文将介绍如何在移动端中正确的使用setInterval</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#我在项目中使用setInterval的时候，是结合服务器时间-和-本地时间差进行-倒计时计算"><span class="post-toc-number">2.</span> <span class="post-toc-text">我在项目中使用setInterval的时候，是结合服务器时间 和 本地时间差进行 倒计时计算</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-how-use-setInterval"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">use-setInterval</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-04 13:42:17" datetime="2018-05-04T05:42:17.000Z"  itemprop="datePublished">2018-05-04</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="本文将介绍如何在移动端中正确的使用setInterval"><a href="#本文将介绍如何在移动端中正确的使用setInterval" class="headerlink" title="本文将介绍如何在移动端中正确的使用setInterval"></a>本文将介绍如何在移动端中正确的使用setInterval</h3><ul>
+<li>在正常情况下，使用setInterval就直接利用new Date() 出来的本地时间去进行计时，这在PC端并没有问题，关键是在移动端，特别是ios手机或者safari浏览器中，当当前含有设置setInterval的应用被home切到后台时，这个时候系统机制就将setInterval自动冻结了</li>
+<li>下面给出一篇参考文章——-<a href="https://imququ.com/post/ios-none-freeze-timer.html" target="_blank" rel="noopener">不会被 iOS 停掉的网页定时器</a></li>
+</ul>
+<h3 id="我在项目中使用setInterval的时候，是结合服务器时间-和-本地时间差进行-倒计时计算"><a href="#我在项目中使用setInterval的时候，是结合服务器时间-和-本地时间差进行-倒计时计算" class="headerlink" title="我在项目中使用setInterval的时候，是结合服务器时间 和 本地时间差进行 倒计时计算"></a>我在项目中使用setInterval的时候，是结合服务器时间 和 本地时间差进行 倒计时计算</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一步：从接口获取服务器时间</span></span><br><span class="line"><span class="keyword">var</span> _self = <span class="keyword">this</span></span><br><span class="line"><span class="comment">// 首先要拿到接口中给出的过期时间 和 请求接口的当前服务器时间， 作差 moreShopDisTime</span></span><br><span class="line">_self.moreShopDisTime = _self.$data.dataList[i].goods3.end_time - _self.$data.dataList[i].goods3.now_time</span><br><span class="line">_self.setTimeEnevt()</span><br><span class="line"><span class="comment">//if (_self.moreShopDisTime &gt; 0) &#123;</span></span><br><span class="line"><span class="comment">//    _self.setTimeEnevt()</span></span><br><span class="line"><span class="comment">//&#125; else &#123;</span></span><br><span class="line"><span class="comment">//    _self.moreShopFlag = false</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第二步：设置setInterval</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setTimeEnevt</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      _self.setGetTime(_self.moreShopDisTime) <span class="comment">// 渲染DOM界面</span></span><br><span class="line">      <span class="keyword">var</span> dateLocal = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()    <span class="comment">// 获取本地时间存储在全局变量</span></span><br><span class="line">      _self.localTime = <span class="built_in">Math</span>.round(dateLocal / <span class="number">1000</span>)  <span class="comment">// 取秒</span></span><br><span class="line">      _self.timeSetIntervalObj = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  <span class="comment">// setInterval开启</span></span><br><span class="line">        <span class="keyword">var</span> dateLocalTime = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()</span><br><span class="line">        dateLocalTime = <span class="built_in">Math</span>.round(dateLocalTime / <span class="number">1000</span>)   <span class="comment">//局部变量存储本地时间</span></span><br><span class="line">        <span class="keyword">var</span> moreShopServeTime = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> ((dateLocalTime - _self.localTime) &lt;= _self.moreShopDisTime) &#123;</span><br><span class="line">          moreShopServeTime = _self.moreShopDisTime - (dateLocalTime - _self.localTime)</span><br><span class="line">          _self.setGetTime(moreShopServeTime)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          _self.moreShopFlag = <span class="literal">false</span></span><br><span class="line">          clearInterval(_self.timeSetIntervalObj)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;, <span class="number">1000</span>)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第三步：时间戳格式化</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setGetTime</span> (<span class="params">timess</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> theTime = timess <span class="comment">// 秒</span></span><br><span class="line">      <span class="keyword">var</span> theTime1 = <span class="number">0</span> <span class="comment">// 分</span></span><br><span class="line">      <span class="keyword">var</span> theTime2 = <span class="number">0</span> <span class="comment">// 小时</span></span><br><span class="line">      <span class="keyword">if</span> (theTime &gt; <span class="number">60</span>) &#123;</span><br><span class="line">        theTime1 = <span class="built_in">parseInt</span>(theTime / <span class="number">60</span>)</span><br><span class="line">        theTime = <span class="built_in">parseInt</span>(theTime % <span class="number">60</span>)</span><br><span class="line">        <span class="keyword">if</span> (theTime1 &gt; <span class="number">60</span>) &#123;</span><br><span class="line">          theTime2 = <span class="built_in">parseInt</span>(theTime1 / <span class="number">60</span>)</span><br><span class="line">          theTime1 = <span class="built_in">parseInt</span>(theTime1 % <span class="number">60</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (theTime2 &gt; <span class="number">9</span>) &#123; <span class="comment">// 时</span></span><br><span class="line">        <span class="keyword">this</span>.timeShopHour = theTime2</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (theTime2 &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.timeShopHour = <span class="string">'0'</span> + theTime2</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.timeShopHour = <span class="string">'00'</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (theTime1 &gt; <span class="number">9</span>) &#123; <span class="comment">// 分</span></span><br><span class="line">        <span class="keyword">this</span>.timeShopMinute = theTime1</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (theTime2 &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.timeShopMinute = <span class="string">'0'</span> + theTime1</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.timeShopMinute = <span class="string">'00'</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (theTime &gt; <span class="number">9</span>) &#123; <span class="comment">// 秒</span></span><br><span class="line">        <span class="keyword">this</span>.timeShopSecond = theTime</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (theTime &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.timeShopSecond = <span class="string">'0'</span> + theTime</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.timeShopSecond = <span class="string">'00'</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您阅读我的博客，您有好的建议或意见可以留言给我。：<a href="https://agxr.gitlab.io/" target="_blank" rel="external">https://agxr.gitlab.io/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://agxr.github.io">
+            <img src="/img/fireIcon.png" alt="BoyGXR">
+            BoyGXR
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://agxr.github.io/2018/05/04/how-use-setInterval/&title=《use-setInterval》 — BoyGXR Blog&pic=https://agxr.github.io/img/fireIcon.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://agxr.github.io/2018/05/04/how-use-setInterval/&title=《use-setInterval》 — BoyGXR Blog&source=本文将介绍如何在移动端中正确的使用setInterval
+在正常情况下，使用setInterval就直接利用new Date() 出来的本地时间去进行计时..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://agxr.github.io/2018/05/04/how-use-setInterval/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《use-setInterval》 — BoyGXR Blog&url=https://agxr.github.io/2018/05/04/how-use-setInterval/&via=https://agxr.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://agxr.github.io/2018/05/04/how-use-setInterval/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/09/git-learn/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">git-learn</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/02/use-nodeproxy/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">use-nodeproxy</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 暂时写在这里引入，之后放在全局 -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "fwwOBmAhJuGhMQkwhQsSzi7U-gzGzoHsz",
+            appKey: "MlvA5m1dMLqCMI86mPxcyXrB",
+            avatar: "mm",
+            placeholder: "欢迎您的评论与建议",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+        window.onload = function () {
+            $(".vhead").each(function (i,v) {
+                //浏览器图标
+                if($(this).find(".vsys").eq(0).text().toUpperCase().includes('CHROME')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/chrome.svg"/>');
+                }else if($(this).find(".vsys").eq(0).text().toUpperCase().includes('UC')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/UC浏览器.svg"/>');
+                }else if($(this).find(".vsys").eq(0).text().toUpperCase().includes('OPERA')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/opera.svg"/>');
+                }
+                //系统图标
+                if($(this).find(".vsys").eq(1).text().toUpperCase().includes('WINDOWS')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/windows.svg"/>');
+                }else if($(this).find(".vsys").eq(1).text().toUpperCase().includes('APPLE')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/apple.svg"/>');
+                }else if($(this).find(".vsys").eq(1).text().toUpperCase().includes('LINUX')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/linux.svg"/>');
+                }
+            })
+        }
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你的支持
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wexin.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wexin.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label">换一个</span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <!-- <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>footer.license</span>
+        </p> -->
+    </div>
+    <div class="bottom">
+        <p><span>BoyGXR &copy; 2018 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">冀ICP备19002146号</a>
+                
+            </span>
+            <span id="runtime_span" class="runtime_span"></span>
+            <!-- 全局注入js，当前网站运行时间 -->
+            <script type="text/javascript">
+            function show_runtime(){
+              window.setTimeout("show_runtime()",1000);
+              X=new Date("03/13/2018 00:00:00");
+              Y=new Date();
+              T=(Y.getTime()-X.getTime());
+              M=24*60*60*1000;
+              a=T/M;A=Math.floor(a);
+              b=(a-A)*24;B=Math.floor(b);
+              c=(b-B)*60;C=Math.floor((b-B)*60);
+              D=Math.floor((c-C)*60);
+              runtime_span.innerHTML="—— 本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒 ——";
+            }
+            show_runtime();
+            </script>
+            <!-- END 全局注入js，当前网站运行时间 -->
+        </p>
+        <p>
+            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/dearzoe/hexo-theme-gruffalo" target="_blank">gruffalo</a>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://agxr.github.io/2018/05/04/how-use-setInterval/&title=《use-setInterval》 — BoyGXR Blog&pic=https://agxr.github.io/img/fireIcon.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://agxr.github.io/2018/05/04/how-use-setInterval/&title=《use-setInterval》 — BoyGXR Blog&source=本文将介绍如何在移动端中正确的使用setInterval
+在正常情况下，使用setInterval就直接利用new Date() 出来的本地时间去进行计时..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://agxr.github.io/2018/05/04/how-use-setInterval/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《use-setInterval》 — BoyGXR Blog&url=https://agxr.github.io/2018/05/04/how-use-setInterval/&via=https://agxr.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://agxr.github.io/2018/05/04/how-use-setInterval/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aQZKDMAwEwP3/p9nrXkJmZNgqTPuUSgK4OagkWT8/8Tr+rE+/5v//dG1+1XBhYGA8lnGcrhnj/M4JJt8bBgbGexj5rdurkm+SX788HQMDAyNg5CldEqAxMDAw1hkrm2gDNAYGBkZexK5Q86Tw9locAwPjgYw2mfvPz7ecb2BgYDyKcZSrPXps7zZbGBgYezPWC9S2cE2umu0HAwNjV8bskUsjEedvdHYIgYGBsTUjb3ud3y4f/MoHztqxDAwMjF0Z9+WbyUbrHPY8NcTAwNiUkV+23pNvxzLylBQDA+M9jLY0bRttbZjO/4OBgfE2RnIMkIxKtAcJK6UsBgbG3owkgOaF7rVF7Pn7jmZGMDAwtmO0IxRtoGyPB4onYmBgvIwxG/mapZKzFls9tYGBgfFwRj56lYTCWfOuRUZHmBgYGFsz2i5dMhKR8y4YxcDAwNiacVVp2h4VtIMU5zvEwMDYlZEPWORp3yyY5kX1l9wWAwNja0Z7lFika6ONFsUzBgbGCxizgnPWFLtqXKx4ixgYGBsx8sZZ22IrKuk4WH8MuBgYGBsxjnLNmmuzF5SPemBgYOzNmAW7/MF5u78d8piFbAwMjOcyVlpdbSKYpJjD9BEDA+MFjDzwtfg8gK7sFgMDAyMvU+8YJsPAwMBYCbhtOpinhu2RJwYGxhsYbZKXt+TaFDMfAcHAwHgPY1Y6zh7Q8q4qfTEwMB7L+AVU9wPx59t0NAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, MOON: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去干哈？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '●_● 你肥来啦~';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+<!-- 全局注入js -->
+<script type="text/javascript">
+  var twoIcon = document.getElementsByClassName('fade-scale');
+  var iconLen = twoIcon.length;
+  var pathName = window.location.pathname;
+  // console.log(pathName.length)
+  if (pathName.split('/').length > 3) {
+    for (var i = 0; i < iconLen; i++) {
+      twoIcon[i].style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>

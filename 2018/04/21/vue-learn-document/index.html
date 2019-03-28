@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?df88a07402a1eea92f95c45876223a3e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="baidu-site-verification" content="XQTL8zP2AE">
+    <title>vue-learn | BoyGXR Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="vue">
+    <meta name="description" content="vue学习 1.vue-resource获取接口数据的方法，参考：Vue基础知识之vue-resource和axios  2.vue-cli搭建的架子里面加入mock假数据，参考文章  3.关于Vue实例的生命周期created和mounted的区别…参考文章  4.Vue如何使用vue-awesome-swiper实现轮播效果…参考文章">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-learn">
+<meta property="og:url" content="https://agxr.github.io/2018/04/21/vue-learn-document/index.html">
+<meta property="og:site_name" content="BoyGXR Blog">
+<meta property="og:description" content="vue学习 1.vue-resource获取接口数据的方法，参考：Vue基础知识之vue-resource和axios  2.vue-cli搭建的架子里面加入mock假数据，参考文章  3.关于Vue实例的生命周期created和mounted的区别…参考文章  4.Vue如何使用vue-awesome-swiper实现轮播效果…参考文章">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2019-03-28T05:54:13.575Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue-learn">
+<meta name="twitter:description" content="vue学习 1.vue-resource获取接口数据的方法，参考：Vue基础知识之vue-resource和axios  2.vue-cli搭建的架子里面加入mock假数据，参考文章  3.关于Vue实例的生命周期created和mounted的区别…参考文章  4.Vue如何使用vue-awesome-swiper实现轮播效果…参考文章">
+    
+        <link rel="alternate" type="application/atom+xml" title="BoyGXR Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/boygxricon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/fireIcon.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">BoyGXR</h5>
+          <a href="mailto:itboygxr520@163.com" title="itboygxr520@163.com" class="mail">itboygxr520@163.com</a>
+          <div style="margin-top: 5px; margin-bottom: 5px; font-size: 92%"><b>文章共 14 篇，约 10.1k 字</b></div>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                
+                  <i class="icon icon-lg icon-home"></i>
+                
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                
+                  <i class="icon icon-lg icon-archives"></i>
+                
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                
+                  <i class="icon icon-lg icon-tags"></i>
+                
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                
+                  <i class="icon icon-lg icon-th-list"></i>
+                
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                
+                  <i class="icon icon-lg icon-github-alt"></i>
+                
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Agxr" target="_blank" >
+                
+                  <i class="icon icon-lg icon-github"></i>
+                
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div id="headerTitle" class="flex-col header-title ellipsis">vue-learn</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="global.search_input_hint">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="themeToggle" title="夜间模式">
+            <i class="icon icon-lg icon-moon-o"></i>
+        </a>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">vue-learn</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-21T08:35:36.000Z" itemprop="datePublished" class="page-time">
+  2018-04-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/">vue</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    <div class="grass fade-scale">
+
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vue学习"><span class="post-toc-number">1.</span> <span class="post-toc-text">vue学习</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vuex学习"><span class="post-toc-number">2.</span> <span class="post-toc-text">vuex学习</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-vue-learn-document"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vue-learn</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-21 16:35:36" datetime="2018-04-21T08:35:36.000Z"  itemprop="datePublished">2018-04-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/">vue</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="vue学习"><a href="#vue学习" class="headerlink" title="vue学习"></a>vue学习</h3><ul>
+<li><p>1.vue-resource获取接口数据的方法，参考：<a href="https://www.cnblogs.com/Juphy/p/7073027.html" target="_blank" rel="noopener">Vue基础知识之vue-resource和axios</a></p>
+</li>
+<li><p>2.vue-cli搭建的架子里面加入mock假数据，<a href="https://www.jianshu.com/p/ccd53488a61b" target="_blank" rel="noopener">参考文章</a></p>
+</li>
+<li><p>3.关于Vue实例的生命周期created和mounted的区别…<a href="http://www.zhimengzhe.com/Javascriptjiaocheng/236707.html" target="_blank" rel="noopener">参考文章</a></p>
+</li>
+<li><p>4.Vue如何使用vue-awesome-swiper实现轮播效果…<a href="https://www.cnblogs.com/zishang91/p/7600006.html" target="_blank" rel="noopener">参考文章</a></p>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>5.<a href="https://www.cnblogs.com/wisewrong/p/6277262.html" target="_blank" rel="noopener">Vue学习借鉴参考文章–爬坑之路</a></p>
+</li>
+<li><p>6.<a href="https://www.jianshu.com/p/f5bbcbd5b4b5" target="_blank" rel="noopener">在vue-cli中使用vue-router及vuex的例子</a></p>
+</li>
+<li><p>7.在vue中使用aixos出现跨域的解决方案—参考文章<a href="http://blog.csdn.net/kirinlau/article/details/78611774" target="_blank" rel="noopener">vue中axios解决跨域问题和拦截器使用</a></p>
+</li>
+<li><p>8.在vue中使用bus，实现非父子组件之间的传参—<a href="https://www.cnblogs.com/place-J-P/p/7586819.html" target="_blank" rel="noopener">参考文章</a>—-||||—-<a href="https://blog.csdn.net/u013034014/article/details/54574989?locationNum=2&amp;fps=1" target="_blank" rel="noopener">vue2.0s中eventBus实现兄弟组件通信</a></p>
+</li>
+<li><p>9.vue中使用webpack打包优化。<a href="https://www.cnblogs.com/kevin2chen/p/6816693.html" target="_blank" rel="noopener">参考文章</a></p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">例： 对于单页应用，可以使用bundle-loader异步加载各路由对应的组件（懒加载），尽快显示首屏。</span><br><span class="line">- 在vue-router中，使用``const Foo = () =&gt; import(<span class="string">'./Foo.vue'</span>)``懒加载。</span><br><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/'</span>,</span><br><span class="line">        name: <span class="string">'Hello'</span>,</span><br><span class="line">        component: () =&gt; import(<span class="string">'../module/HelloWorld'</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/check'</span>,</span><br><span class="line">        name: <span class="string">'check'</span>,</span><br><span class="line">        component: r =&gt; require([<span class="string">'@/pages/spa/module/CheckBox'</span>], r)</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vue打包优化的思路：</span><br><span class="line">1.路由懒加载组件</span><br><span class="line">2.把第三方库单独打包出来 WebpackDLLPlugin &amp; WebpackDllReferencePlugin</span><br><span class="line">3.第三方依赖打包出来后走cdn</span><br><span class="line">4.服务器nginx开启gzip</span><br><span class="line">5.可以开启WebpackBundleAnalyzer查看依赖关系针对性进行优化 有些依赖其实是没用上的</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>10.vue路由的懒加载–<a href="http://www.cnblogs.com/wjunwei/p/9242142.html" target="_blank" rel="noopener">参考文章2</a></p>
+</li>
+<li><p>11.<a href="https://blog.csdn.net/qq_36306590/article/details/81746897" target="_blank" rel="noopener">vue cli-3 配置axios 跨域请求和表单提交</a></p>
+</li>
+<li><p>12.父组件往子组件传参通过props（属性）传参时，在子组件中接受时，可设置默认数值</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">"searchInput"</span>,</span><br><span class="line">  props: &#123;</span><br><span class="line">    placeholder: &#123;</span><br><span class="line">      <span class="built_in">type</span>: String, // 数据类型</span><br><span class="line">      default: <span class="string">"请输入关键字"</span> // 默认值</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>13.</li>
+</ul>
+<hr>
+<h3 id="vuex学习"><a href="#vuex学习" class="headerlink" title="vuex学习"></a>vuex学习</h3><ul>
+<li><p>1.vuex的—-<a href="https://blog.csdn.net/u012149969/article/details/80350907" target="_blank" rel="noopener">知识博客</a></p>
+</li>
+<li><p>2.<a href="https://blog.csdn.net/fuck487/article/details/83411856" target="_blank" rel="noopener">vuex namespaced的作用以及使用方式</a></p>
+</li>
+</ul>
+<blockquote>
+<p>vuex namespaced的作用以及使用方式  </p>
+</blockquote>
+<blockquote>
+<p>vuex中的store分模块管理，需要在store的index.js中引入各个模块，为了解决不同模块命名冲突的问题，将不同模块的namespaced:true，之后在不同页面中引入getter、actions、mutations时，需要加上所属的模块名  </p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1、声明分模块的store时加上namespaced:<span class="literal">true</span></span><br><span class="line">    <span class="built_in">export</span> default &#123;</span><br><span class="line">      namespaced: <span class="literal">true</span>,</span><br><span class="line">      state,</span><br><span class="line">      getters,</span><br><span class="line">      actions,</span><br><span class="line">      mutations</span><br><span class="line">    &#125;</span><br><span class="line">2、使用模块中的mutations、getters、actions时候，要加上模块名，例如使用commint执行mutations时</span><br><span class="line">    &gt; 格式：模块名/模块中的mutations</span><br><span class="line">    &gt; xxx/setUserInfo</span><br><span class="line">    &gt; this.<span class="variable">$store</span>.commit(<span class="string">"userInfo/setUserInfo"</span>,userInfo)</span><br><span class="line">3、获取属性时同样加上模块名</span><br><span class="line">    &gt; 格式：store.state.模块名.模块属性</span><br><span class="line">    &gt; <span class="variable">$store</span>.state.userInfo.userName</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3.</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您阅读我的博客，您有好的建议或意见可以留言给我。：<a href="https://agxr.gitlab.io/" target="_blank" rel="external">https://agxr.gitlab.io/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://agxr.github.io">
+            <img src="/img/fireIcon.png" alt="BoyGXR">
+            BoyGXR
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://agxr.github.io/2018/04/21/vue-learn-document/&title=《vue-learn》 — BoyGXR Blog&pic=https://agxr.github.io/img/fireIcon.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://agxr.github.io/2018/04/21/vue-learn-document/&title=《vue-learn》 — BoyGXR Blog&source=vue学习
+1.vue-resource获取接口数据的方法，参考：Vue基础知识之vue-resource和axios
+
+2.vue-cli搭建的架子里面..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://agxr.github.io/2018/04/21/vue-learn-document/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue-learn》 — BoyGXR Blog&url=https://agxr.github.io/2018/04/21/vue-learn-document/&via=https://agxr.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://agxr.github.io/2018/04/21/vue-learn-document/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/22/vue-cli3-axios/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">vue-cli3.x+axios</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/13/use-githubpage-hexo/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">use-githubPage-hexo</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 暂时写在这里引入，之后放在全局 -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "fwwOBmAhJuGhMQkwhQsSzi7U-gzGzoHsz",
+            appKey: "MlvA5m1dMLqCMI86mPxcyXrB",
+            avatar: "mm",
+            placeholder: "欢迎您的评论与建议",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+        window.onload = function () {
+            $(".vhead").each(function (i,v) {
+                //浏览器图标
+                if($(this).find(".vsys").eq(0).text().toUpperCase().includes('CHROME')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/chrome.svg"/>');
+                }else if($(this).find(".vsys").eq(0).text().toUpperCase().includes('UC')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/UC浏览器.svg"/>');
+                }else if($(this).find(".vsys").eq(0).text().toUpperCase().includes('OPERA')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/opera.svg"/>');
+                }
+                //系统图标
+                if($(this).find(".vsys").eq(1).text().toUpperCase().includes('WINDOWS')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/windows.svg"/>');
+                }else if($(this).find(".vsys").eq(1).text().toUpperCase().includes('APPLE')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/apple.svg"/>');
+                }else if($(this).find(".vsys").eq(1).text().toUpperCase().includes('LINUX')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/linux.svg"/>');
+                }
+            })
+        }
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你的支持
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wexin.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wexin.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label">换一个</span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <!-- <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>footer.license</span>
+        </p> -->
+    </div>
+    <div class="bottom">
+        <p><span>BoyGXR &copy; 2018 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">冀ICP备19002146号</a>
+                
+            </span>
+            <span id="runtime_span" class="runtime_span"></span>
+            <!-- 全局注入js，当前网站运行时间 -->
+            <script type="text/javascript">
+            function show_runtime(){
+              window.setTimeout("show_runtime()",1000);
+              X=new Date("03/13/2018 00:00:00");
+              Y=new Date();
+              T=(Y.getTime()-X.getTime());
+              M=24*60*60*1000;
+              a=T/M;A=Math.floor(a);
+              b=(a-A)*24;B=Math.floor(b);
+              c=(b-B)*60;C=Math.floor((b-B)*60);
+              D=Math.floor((c-C)*60);
+              runtime_span.innerHTML="—— 本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒 ——";
+            }
+            show_runtime();
+            </script>
+            <!-- END 全局注入js，当前网站运行时间 -->
+        </p>
+        <p>
+            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/dearzoe/hexo-theme-gruffalo" target="_blank">gruffalo</a>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://agxr.github.io/2018/04/21/vue-learn-document/&title=《vue-learn》 — BoyGXR Blog&pic=https://agxr.github.io/img/fireIcon.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://agxr.github.io/2018/04/21/vue-learn-document/&title=《vue-learn》 — BoyGXR Blog&source=vue学习
+1.vue-resource获取接口数据的方法，参考：Vue基础知识之vue-resource和axios
+
+2.vue-cli搭建的架子里面..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://agxr.github.io/2018/04/21/vue-learn-document/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue-learn》 — BoyGXR Blog&url=https://agxr.github.io/2018/04/21/vue-learn-document/&via=https://agxr.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://agxr.github.io/2018/04/21/vue-learn-document/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3a0YoCMQxGYd//pcdbQaznT6ow6enVsjtovlkIaZLHA5/r7fC/rj+N/H7bkSFDxm0Z1/K8PkO+jD9JeCQ2GTJknMNIA7rAWadjknBJbDJkyJCRFn8kTXeoMmTIkEECIukyBf814cqQIeO2DJ4Q11+QtufSRL/hLi5DhowbMngj7P8//2S+IUOGjFsxrtIh187OG43jkSFDxmhGmgTTFMmvvqSs/FKeypAhYyiDJEreVuun7PXrQGsWMmTIGMfgl8a03c9LRvL6ULNPhgwZQxm1YUA6vExTarqIJkOGjNMYPO2mofDrccqTIUPGbEYaRHrp7V9iyYuQIUOGDJ58a4UmHxigK7cMGTKGMtJQ0iZdGlxtjCpDhozZjM2ZO1xCJWk3aN7JkCFjKIMn2TSg2sCSjEU//h9kyJAxlJEmPlJKpgVluhAmQ4YMGZ0lCf6Z6fIZGrXKkCFjHKPTxOeLGrUBwIadERkyZAxi1Iq/IJe3W3hBp1CGDBnjGHx8yEs3wqg1+GTIkHEmg68+1AaNtYZaemTIkDGbURtS8ksswewqLmXIkDGVUUttu8aZpKGG2DJkyBjN4IdcXFM8/0y+tCFDhoypjH6S7axrdEYUMmTIOI3RHxjwcnPXJRa122TIkHEYg6TUNb6TWLclXBkyZIxm8GttMZTwGRkyZJzG4F+fjidry15xDDJkyBjN6GxqpMGlkwpSnsqQIWM04wnMUhQZkPdnowAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, MOON: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去干哈？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '●_● 你肥来啦~';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+<!-- 全局注入js -->
+<script type="text/javascript">
+  var twoIcon = document.getElementsByClassName('fade-scale');
+  var iconLen = twoIcon.length;
+  var pathName = window.location.pathname;
+  // console.log(pathName.length)
+  if (pathName.split('/').length > 3) {
+    for (var i = 0; i < iconLen; i++) {
+      twoIcon[i].style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>

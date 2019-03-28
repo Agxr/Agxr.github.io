@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?df88a07402a1eea92f95c45876223a3e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="baidu-site-verification" content="XQTL8zP2AE">
+    <title>BoyGXR Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="boyGXR 葛雪瑞 web 前端 javascript js">
+    <meta name="description" content="初入前端，正在努力学习前端知识。前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
+<meta name="keywords" content="boyGXR 葛雪瑞 web 前端 javascript js">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BoyGXR Blog">
+<meta property="og:url" content="https://agxr.github.io/index.html">
+<meta property="og:site_name" content="BoyGXR Blog">
+<meta property="og:description" content="初入前端，正在努力学习前端知识。前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
+<meta property="og:locale" content="Chinese">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BoyGXR Blog">
+<meta name="twitter:description" content="初入前端，正在努力学习前端知识。前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
+    
+        <link rel="alternate" type="application/atom+xml" title="BoyGXR Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/boygxricon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/fireIcon.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">BoyGXR</h5>
+          <a href="mailto:itboygxr520@163.com" title="itboygxr520@163.com" class="mail">itboygxr520@163.com</a>
+          <div style="margin-top: 5px; margin-bottom: 5px; font-size: 92%"><b>文章共 14 篇，约 10.1k 字</b></div>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect active">
+              <a href="/"  >
+                
+                  <i class="icon icon-lg icon-home"></i>
+                
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                
+                  <i class="icon icon-lg icon-archives"></i>
+                
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                
+                  <i class="icon icon-lg icon-tags"></i>
+                
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                
+                  <i class="icon icon-lg icon-th-list"></i>
+                
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                
+                  <i class="icon icon-lg icon-github-alt"></i>
+                
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Agxr" target="_blank" >
+                
+                  <i class="icon icon-lg icon-github"></i>
+                
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div id="headerTitle" class="flex-col header-title ellipsis">BoyGXR Blog</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="global.search_input_hint">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="themeToggle" title="夜间模式">
+            <i class="icon icon-lg icon-moon-o"></i>
+        </a>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">BoyGXR Blog</h1>
+        <h5 class="subtitle">
+            
+                
+            
+        </h5>
+    </div>
+
+    <div class="grass fade-scale">
+
+    </div>
+
+    
+
+
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-sync-to-async"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-22 10:41:29" datetime="2018-08-22T02:41:29.000Z"  itemprop="datePublished">2018-08-22</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+
+
+        <span style="color: dodgerblue">
+            约 157 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 2.5 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/08/22/sync-to-async/">sync-to-async</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <ul>
+<li>写js逻辑的，特别是调api接口时，这个时候请求都是异步处理的，只能等请求完毕才能做接下来的渲染处理，这个时候就设计到如何将异步问题转为同步问题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一、封装一个callback函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callback</span> (<span class="params">fun, data</span>) </span>&#123;</span><br><span class="line"><span class="comment">//   console.log(data)</span></span><br><span class="line">  <span class="keyword">typeof</span> fun == <span class="string">"function"</span> &amp;&amp; fun(<span class="string">'回调成功'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> newData = &#123;</span><br><span class="line">  <span class="string">'key1'</span>: <span class="string">'aaa'</span>,</span><br><span class="line">  <span class="string">'key'</span>: <span class="number">11111</span></span><br><span class="line">&#125;;</span><br><span class="line">callback(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(newData)</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;, newData)</span><br></pre></td></tr></table></figure>
+    
+
+        <!--<a href="/2018/08/22/sync-to-async/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/08/22/sync-to-async/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/callback/">callback</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-git-merge"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-05-10 11:24:36" datetime="2018-05-10T03:24:36.000Z"  itemprop="datePublished">2018-05-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
+
+
+
+        <span style="color: dodgerblue">
+            约 1,373 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 15 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/05/10/git-merge/">git冲突</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h4 id="git操作之解决冲突"><a href="#git操作之解决冲突" class="headerlink" title="git操作之解决冲突"></a>git操作之解决冲突</h4><blockquote>
+<p>使用git pull代码时，经常会碰到有冲突的情况，提示如下信息：  </p>
+</blockquote>
+<blockquote>
+<p>error: Your local changes to ‘c/environ.c’ would be overwritten by merge.  Aborting.<br>Please, commit your changes or stash them before you can merge.  </p>
+</blockquote>
+<blockquote>
+<p>这个意思是说更新下来的内容和本地修改的内容有冲突，先提交你的改变或者先将本地修改暂时存储起来。  </p>
+</blockquote>
+<ul>
+<li>1.git stash 的方式解决 –<a href="http://www.01happy.com/git-resolve-conflicts/" target="_blank" rel="noopener">参考博客</a></li>
+</ul>
+    
+
+        <!--<a href="/2018/05/10/git-merge/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/05/10/git-merge/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-git-learn"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-05-09 10:15:00" datetime="2018-05-09T02:15:00.000Z"  itemprop="datePublished">2018-05-09</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
+
+
+
+        <span style="color: dodgerblue">
+            约 1,783 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 17.5 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/05/09/git-learn/">git-learn</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h4 id="1-git参考学习文章："><a href="#1-git参考学习文章：" class="headerlink" title="1.git参考学习文章："></a>1.git参考学习文章：</h4><ul>
+<li>01.廖雪峰的<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="noopener">git官方网站</a></li>
+<li>02.git多人协作式 git指令操作 及 常见问题—<a href="http://www.cnblogs.com/wufangfang/p/6085767.html" target="_blank" rel="noopener">参考文献</a></li>
+<li>03.使用git克隆指定分支的代码–<a href="http://www.cnblogs.com/nylcy/p/6569284.html" target="_blank" rel="noopener">参考文献</a></li>
+<li>04.git命令－切换分支–<a href="http://blog.csdn.net/u014540717/article/details/54314126" target="_blank" rel="noopener">参考文献</a></li>
+<li>05.<a href="http://www.01happy.com/git-resolve-conflicts/" target="_blank" rel="noopener">使用git pull文件时和本地文件冲突时的解决办法</a></li>
+</ul>
+    
+
+        <!--<a href="/2018/05/09/git-learn/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/05/09/git-learn/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-how-use-setInterval"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-05-04 13:42:17" datetime="2018-05-04T05:42:17.000Z"  itemprop="datePublished">2018-05-04</time>
+
+        
+
+
+        <span style="color: dodgerblue">
+            约 496 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 5 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/05/04/how-use-setInterval/">use-setInterval</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h3 id="本文将介绍如何在移动端中正确的使用setInterval"><a href="#本文将介绍如何在移动端中正确的使用setInterval" class="headerlink" title="本文将介绍如何在移动端中正确的使用setInterval"></a>本文将介绍如何在移动端中正确的使用setInterval</h3><ul>
+<li>在正常情况下，使用setInterval就直接利用new Date() 出来的本地时间去进行计时，这在PC端并没有问题，关键是在移动端，特别是ios手机或者safari浏览器中，当当前含有设置setInterval的应用被home切到后台时，这个时候系统机制就将setInterval自动冻结了</li>
+<li>下面给出一篇参考文章——-<a href="https://imququ.com/post/ios-none-freeze-timer.html" target="_blank" rel="noopener">不会被 iOS 停掉的网页定时器</a></li>
+</ul>
+<h3 id="我在项目中使用setInterval的时候，是结合服务器时间-和-本地时间差进行-倒计时计算"><a href="#我在项目中使用setInterval的时候，是结合服务器时间-和-本地时间差进行-倒计时计算" class="headerlink" title="我在项目中使用setInterval的时候，是结合服务器时间 和 本地时间差进行 倒计时计算"></a>我在项目中使用setInterval的时候，是结合服务器时间 和 本地时间差进行 倒计时计算</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一步：从接口获取服务器时间</span></span><br><span class="line"><span class="keyword">var</span> _self = <span class="keyword">this</span></span><br><span class="line"><span class="comment">// 首先要拿到接口中给出的过期时间 和 请求接口的当前服务器时间， 作差 moreShopDisTime</span></span><br><span class="line">_self.moreShopDisTime = _self.$data.dataList[i].goods3.end_time - _self.$data.dataList[i].goods3.now_time</span><br><span class="line">_self.setTimeEnevt()</span><br><span class="line"><span class="comment">//if (_self.moreShopDisTime &gt; 0) &#123;</span></span><br><span class="line"><span class="comment">//    _self.setTimeEnevt()</span></span><br><span class="line"><span class="comment">//&#125; else &#123;</span></span><br><span class="line"><span class="comment">//    _self.moreShopFlag = false</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br></pre></td></tr></table></figure>
+    
+
+        <!--<a href="/2018/05/04/how-use-setInterval/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/05/04/how-use-setInterval/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-use-nodeproxy"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-05-02 17:58:25" datetime="2018-05-02T09:58:25.000Z"  itemprop="datePublished">2018-05-02</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
+
+
+
+        <span style="color: dodgerblue">
+            约 708 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 10 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/05/02/use-nodeproxy/">use-nodeproxy</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h3 id="本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。"><a href="#本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。" class="headerlink" title="本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。"></a>本文将介绍用nodejs搭建本地http服务器，并且判断访问接口URL时进行转发，完美解决本地开发时候的跨域问题。</h3><ul>
+<li>首先放两篇借用参考文章—-\\参考文章1：<a href="http://www.cnblogs.com/shawn-xie/archive/2013/06/06/3121173.html" target="_blank" rel="noopener">node.js搭建本地http服务器参考了shawn.xie的</a>—————–\\<a href="http://www.jb51.net/article/91627.htm" target="_blank" rel="noopener">参考文章2</a></li>
+</ul>
+<h4 id="项目开始："><a href="#项目开始：" class="headerlink" title="项目开始："></a>项目开始：</h4><ul>
+<li>第一步：npm初始</li>
+</ul>
+<blockquote>
+<p> npm init  </p>
+</blockquote>
+<ul>
+<li>第二步：安装node-http-proxy模块</li>
+</ul>
+<blockquote>
+<p> npm install http-proxy –save-dev  </p>
+</blockquote>
+    
+
+        <!--<a href="/2018/05/02/use-nodeproxy/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/05/02/use-nodeproxy/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-http-proxy/">node-http-proxy</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-pcFile-phone-see"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-05-01 11:38:49" datetime="2018-05-01T03:38:49.000Z"  itemprop="datePublished">2018-05-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
+
+
+
+        <span style="color: dodgerblue">
+            约 143 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 2.5 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/05/01/pcFile-phone-see/">browser-sync</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h3 id="本文介绍如何在手机上预览pc电脑上的文件"><a href="#本文介绍如何在手机上预览pc电脑上的文件" class="headerlink" title="本文介绍如何在手机上预览pc电脑上的文件"></a>本文介绍如何在手机上预览pc电脑上的文件</h3><ul>
+<li>参考链接—<a href="http://www.browsersync.cn/#install" target="_blank" rel="noopener">Browsersync能让浏览器实时、快速响应您的文件更改，同时在PC、平板、手机等设备下进项调试。</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.全局安装browser-sync</span><br><span class="line">    npm install -g browser-sync</span><br><span class="line">2.打开要执行的项目 (快捷键 <span class="built_in">shift</span>+右键)</span><br><span class="line">    browser-sync start --server -port 3032</span><br><span class="line">这个时候不需要用browser-sync提供的ip，用自己 本机pc的ip + 端口号 + 要访问的文件路径 即可访问，同时也可以在手机上进行访问</span><br></pre></td></tr></table></figure>
+    
+
+        <!--<a href="/2018/05/01/pcFile-phone-see/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/05/01/pcFile-phone-see/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/browser-sync/">browser-sync</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-vue-Object_defineProerty"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-04-26 10:47:25" datetime="2018-04-26T02:47:25.000Z"  itemprop="datePublished">2018-04-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/">vue</a></li></ul>
+
+
+
+        <span style="color: dodgerblue">
+            约 1,600 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 17.5 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/04/26/vue-Object_defineProerty/">vue-Object.defineProperty</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h3 id="vue中的-Object-defineProperty"><a href="#vue中的-Object-defineProperty" class="headerlink" title="vue中的 Object.defineProperty"></a>vue中的 Object.defineProperty</h3><blockquote>
+<p>我之前写了一篇没什么干货的文章。。并且刨了一个大坑。。<br>今天。。打算来填一天。。并再刨一个。。哈哈<br>不过话说说回来了.看本文之前，，<br>如果不知道Object.defineProperty，还必须看看解析神奇的 Object.defineProperty<br>不得不感慨vue的作者，人长得帅，码写的也好。<br>本文是根据作者源码，摘取出来的  </p>
+</blockquote>
+<ul>
+<li>1.本文将实现什么</li>
+</ul>
+<blockquote>
+<p>正如上一篇许下的承诺一样，本文要实现一个 $wacth </p>
+</blockquote>
+    
+
+        <!--<a href="/2018/04/26/vue-Object_defineProerty/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/04/26/vue-Object_defineProerty/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object-defineProperty/">Object.defineProperty</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-vue-event"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-04-25 16:35:36" datetime="2018-04-25T08:35:36.000Z"  itemprop="datePublished">2018-04-25</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/">vue</a></li></ul>
+
+
+
+        <span style="color: dodgerblue">
+            约 117 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 2.5 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/04/25/vue-event/">vue-event</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h3 id="本文将介绍在使用vue进行项目开发的时候，再给DOM加click之类的事件时，获取DOM事件源"><a href="#本文将介绍在使用vue进行项目开发的时候，再给DOM加click之类的事件时，获取DOM事件源" class="headerlink" title="本文将介绍在使用vue进行项目开发的时候，再给DOM加click之类的事件时，获取DOM事件源"></a>本文将介绍在使用vue进行项目开发的时候，再给DOM加click之类的事件时，获取DOM事件源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.vue事件获取事件对象,vue获取事件源</span><br><span class="line">    例：定义一事件 @click=targetEvn(<span class="variable">$event</span>, tag)</span><br><span class="line">    在事件声明 targetEvn(evn, tag) &#123;</span><br><span class="line">        console.log(evn) // evn即表示当前事件</span><br><span class="line">        console.log(evn.target) // evn.target即表示当前事件源，获取该DOM节点进行业务逻辑上的功能开发</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+    
+
+        <!--<a href="/2018/04/25/vue-event/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/04/25/vue-event/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/event-object/">event-object</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-vue-loading"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-04-24 13:30:10" datetime="2018-04-24T05:30:10.000Z"  itemprop="datePublished">2018-04-24</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/">vue</a></li></ul>
+
+
+
+        <span style="color: dodgerblue">
+            约 590 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 7.5 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/04/24/vue-loading/">vue-loading</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h3 id="vue项目加载数据时-loding图"><a href="#vue项目加载数据时-loding图" class="headerlink" title="vue项目加载数据时 loding图"></a>vue项目加载数据时 loding图</h3><ul>
+<li>1.一般项目中，有时候会要求，你在数据请求的时候显示一张gif图片，然后数据加载完后，消失。这个，一般只需要在封装的axios中写入js事件即可。当然，我们首先需要在app.vue中，加入此图片。如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;loading v-show=&quot;fetchLoading&quot;&gt;&lt;/loading&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+    
+
+        <!--<a href="/2018/04/24/vue-loading/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/04/24/vue-loading/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/loading/">loading</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-vue-filter"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-04-23 13:10:36" datetime="2018-04-23T05:10:36.000Z"  itemprop="datePublished">2018-04-23</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/">vue</a></li></ul>
+
+
+
+        <span style="color: dodgerblue">
+            约 340 字
+        </span>
+        <span>
+            将阅读<span style="color: orange;"> 5 </span> 分钟
+        </span>
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/04/23/vue-filter/">vue-filter</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h3 id="vue自定义的过滤器"><a href="#vue自定义的过滤器" class="headerlink" title="vue自定义的过滤器"></a>vue自定义的过滤器</h3><h5 id="Vue2-全局过滤器（vue-cli）"><a href="#Vue2-全局过滤器（vue-cli）" class="headerlink" title="Vue2 全局过滤器（vue-cli）"></a>Vue2 全局过滤器（vue-cli）</h5><ul>
+<li>1.先看官方简介：当前组件注册</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  filters: &#123;</span><br><span class="line">    orderBy() &#123;</span><br><span class="line">      <span class="comment">// doSomething</span></span><br><span class="line">    &#125;,</span><br><span class="line">    uppercase() &#123;</span><br><span class="line">      <span class="comment">// doSomething</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>但是我们做项目来说，大部分的过滤器是要全局使用的，不会每每用到就在组件里面去写，嗯，还是抽成全局的会更好些。  </p>
+</blockquote>
+    
+
+        <!--<a href="/2018/04/23/vue-filter/" class="post-more waves-effect waves-button">
+            post.continue_reading
+        </a>-->
+    </div>
+    <div class="more waves-effect waves-button">
+        <a href="/2018/04/23/vue-filter/">
+            阅读全文
+        </a>
+    </div>
+
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/filter/">filter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+    </ul>
+
+    
+<nav id="page-nav">
+    <div class="inner">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    </div>
+</nav>
+
+
+</div>
+
+<script type="text/javascript">
+(function() {
+  var oDiv = document.getElementsByClassName("post-content");
+  console.log(oDiv[0])
+  var oLen = oDiv.length
+  for (var i = 0; i < oLen; i++) {
+    if (oDiv[i].children.length >= 4) {
+      oDiv[i].removeChild(oDiv[i].children[3])
+    }
+  }
+})()
+</script>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <!-- <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>footer.license</span>
+        </p> -->
+    </div>
+    <div class="bottom">
+        <p><span>BoyGXR &copy; 2018 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">冀ICP备19002146号</a>
+                
+            </span>
+            <span id="runtime_span" class="runtime_span"></span>
+            <!-- 全局注入js，当前网站运行时间 -->
+            <script type="text/javascript">
+            function show_runtime(){
+              window.setTimeout("show_runtime()",1000);
+              X=new Date("03/13/2018 00:00:00");
+              Y=new Date();
+              T=(Y.getTime()-X.getTime());
+              M=24*60*60*1000;
+              a=T/M;A=Math.floor(a);
+              b=(a-A)*24;B=Math.floor(b);
+              c=(b-B)*60;C=Math.floor((b-B)*60);
+              D=Math.floor((c-C)*60);
+              runtime_span.innerHTML="—— 本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒 ——";
+            }
+            show_runtime();
+            </script>
+            <!-- END 全局注入js，当前网站运行时间 -->
+        </p>
+        <p>
+            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/dearzoe/hexo-theme-gruffalo" target="_blank">gruffalo</a>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://agxr.github.io/&title=BoyGXR Blog&pic=https://agxr.github.io/img/fireIcon.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://agxr.github.io/&title=BoyGXR Blog&source=初入前端，正在努力学习前端知识。前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,De..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://agxr.github.io/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=BoyGXR Blog&url=https://agxr.github.io/&via=https://agxr.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://agxr.github.io/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABUklEQVR42u3awQ6DIBBFUf//p+22jWLvY7RJmcvKaALHBTAMs2247W/t+Gb09fh8c5MlayHWftkIazQ8/5kTuixZLVmjGUqeR10T+vC9LFmywHbLQbJkyfr9AjEXQMuSJSvtOv2Bx2N5WbKWYPGsTv35kfyWLFl/ztrDRrgkgP4yiixZzVh8AvNQeMRK+5clqw+rcjXClwkSOn/0I0tWM9bcVK8fPlFILUtWSxZPBqVLAw+dZcnqyUpLedLLErKpb5V/lSVrCValsICX600mf2XJasziR9l0UQhKDWTJaswiE7ue8OXjypIlq4KopJNOtmpZshqwKgUHfEHh/ciS1ZOVTuY5XLqFy5LVk0UWBV6OQK5VUOZWlqyWrMrtRnrcjS9XZMmSFV5nkrTvVlHLkiULDzB3iJUlSxYJmuuFevxgLEtWN9YN9zOX9NLAsmStz3oB6bzuNkbw/KgAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, MOON: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去干哈？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '●_● 你肥来啦~';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+<!-- 全局注入js -->
+<script type="text/javascript">
+  var twoIcon = document.getElementsByClassName('fade-scale');
+  var iconLen = twoIcon.length;
+  var pathName = window.location.pathname;
+  // console.log(pathName.length)
+  if (pathName.split('/').length > 3) {
+    for (var i = 0; i < iconLen; i++) {
+      twoIcon[i].style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>

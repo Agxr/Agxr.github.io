@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?df88a07402a1eea92f95c45876223a3e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End Baidu Tongji -->
+
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <meta name="baidu-site-verification" content="XQTL8zP2AE">
+    <title>vue-Object.defineProperty | BoyGXR Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="vue,Object.defineProperty">
+    <meta name="description" content="vue中的 Object.defineProperty 我之前写了一篇没什么干货的文章。。并且刨了一个大坑。。今天。。打算来填一天。。并再刨一个。。哈哈不过话说说回来了.看本文之前，，如果不知道Object.defineProperty，还必须看看解析神奇的 Object.defineProperty不得不感慨vue的作者，人长得帅，码写的也好。本文是根据作者源码，摘取出来的     1.本文将实">
+<meta name="keywords" content="vue,Object.defineProperty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-Object.defineProperty">
+<meta property="og:url" content="https://agxr.github.io/2018/04/26/vue-Object_defineProerty/index.html">
+<meta property="og:site_name" content="BoyGXR Blog">
+<meta property="og:description" content="vue中的 Object.defineProperty 我之前写了一篇没什么干货的文章。。并且刨了一个大坑。。今天。。打算来填一天。。并再刨一个。。哈哈不过话说说回来了.看本文之前，，如果不知道Object.defineProperty，还必须看看解析神奇的 Object.defineProperty不得不感慨vue的作者，人长得帅，码写的也好。本文是根据作者源码，摘取出来的     1.本文将实">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2019-03-28T05:54:13.575Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue-Object.defineProperty">
+<meta name="twitter:description" content="vue中的 Object.defineProperty 我之前写了一篇没什么干货的文章。。并且刨了一个大坑。。今天。。打算来填一天。。并再刨一个。。哈哈不过话说说回来了.看本文之前，，如果不知道Object.defineProperty，还必须看看解析神奇的 Object.defineProperty不得不感慨vue的作者，人长得帅，码写的也好。本文是根据作者源码，摘取出来的     1.本文将实">
+    
+        <link rel="alternate" type="application/atom+xml" title="BoyGXR Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/boygxricon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/fireIcon.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">BoyGXR</h5>
+          <a href="mailto:itboygxr520@163.com" title="itboygxr520@163.com" class="mail">itboygxr520@163.com</a>
+          <div style="margin-top: 5px; margin-bottom: 5px; font-size: 92%"><b>文章共 14 篇，约 10.1k 字</b></div>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                
+                  <i class="icon icon-lg icon-home"></i>
+                
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                
+                  <i class="icon icon-lg icon-archives"></i>
+                
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                
+                  <i class="icon icon-lg icon-tags"></i>
+                
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                
+                  <i class="icon icon-lg icon-th-list"></i>
+                
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                
+                  <i class="icon icon-lg icon-github-alt"></i>
+                
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Agxr" target="_blank" >
+                
+                  <i class="icon icon-lg icon-github"></i>
+                
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div id="headerTitle" class="flex-col header-title ellipsis">vue-Object.defineProperty</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="global.search_input_hint">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="themeToggle" title="夜间模式">
+            <i class="icon icon-lg icon-moon-o"></i>
+        </a>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">vue-Object.defineProperty</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-26T02:47:25.000Z" itemprop="datePublished" class="page-time">
+  2018-04-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/">vue</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    <div class="grass fade-scale">
+
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vue中的-Object-defineProperty"><span class="post-toc-number">1.</span> <span class="post-toc-text">vue中的 Object.defineProperty</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-vue-Object_defineProerty"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vue-Object.defineProperty</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-26 10:47:25" datetime="2018-04-26T02:47:25.000Z"  itemprop="datePublished">2018-04-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/">vue</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="vue中的-Object-defineProperty"><a href="#vue中的-Object-defineProperty" class="headerlink" title="vue中的 Object.defineProperty"></a>vue中的 Object.defineProperty</h3><blockquote>
+<p>我之前写了一篇没什么干货的文章。。并且刨了一个大坑。。<br>今天。。打算来填一天。。并再刨一个。。哈哈<br>不过话说说回来了.看本文之前，，<br>如果不知道Object.defineProperty，还必须看看解析神奇的 Object.defineProperty<br>不得不感慨vue的作者，人长得帅，码写的也好。<br>本文是根据作者源码，摘取出来的  </p>
+</blockquote>
+<ul>
+<li>1.本文将实现什么</li>
+</ul>
+<blockquote>
+<p>正如上一篇许下的承诺一样，本文要实现一个 $wacth </p>
+</blockquote>
+<a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> v = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  data:&#123;</span><br><span class="line">    a:<span class="number">1</span>,</span><br><span class="line">    b:<span class="number">2</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">v.$watch(<span class="string">"a"</span>,()=&gt;<span class="built_in">console</span>.log(<span class="string">"哈哈，$watch成功"</span>))</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">  v.a = <span class="number">5</span></span><br><span class="line">&#125;,<span class="number">2000</span>) <span class="comment">//打印 哈哈，$watch成功</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为了帮助大家理清思路。。我们就做最简单的实现。。只考虑对象不考虑数组  </p>
+</blockquote>
+<ul>
+<li>2.实现 observer</li>
+</ul>
+<blockquote>
+<p>思路：我们知道Object.defineProperty的特性了，<br>我们就利用它的set和get。。我们将要observe的对象，<br>通过递归，将它所有的属性，包括子属性的属性，都给加上set和get，<br>这样的话，给这个对象的某个属性赋值，就会触发set。。嗯。。开始吧  </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span>  <span class="title">Observer</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(value) &#123;</span><br><span class="line">    <span class="keyword">this</span>.value = value</span><br><span class="line">    <span class="keyword">this</span>.walk(value)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//递归。。让每个字属性可以observe</span></span><br><span class="line">  walk(value)&#123;</span><br><span class="line">    <span class="built_in">Object</span>.keys(value).forEach(<span class="function"><span class="params">key</span>=&gt;</span><span class="keyword">this</span>.convert(key,value[key]))</span><br><span class="line">  &#125;</span><br><span class="line">  convert(key, val)&#123;</span><br><span class="line">    defineReactive(<span class="keyword">this</span>.value, key, val)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">defineReactive</span> (<span class="params">obj, key, val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> childOb = observe(val)</span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">    configurable: <span class="literal">true</span>,</span><br><span class="line">    get: <span class="function"><span class="params">()</span>=&gt;</span>val,</span><br><span class="line">    set:<span class="function"><span class="params">newVal</span>=&gt;</span> &#123;      </span><br><span class="line">     childOb = observe(newVal)<span class="comment">//如果新赋值的值是个复杂类型。再递归它，加上set/get。。</span></span><br><span class="line">     &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">observe</span> (<span class="params">value, vm</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!value || <span class="keyword">typeof</span> value !== <span class="string">'object'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Observer(value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>代码很简单，就给每个属性（包括子属性）都加上get/set，<br>这样的话，这个对象的，有任何赋值，就会触发set方法。。<br>所以，我们是不是应该写一个消息－订阅器呢？这样的话，<br>一触发set方法，我们就发一个通知出来，然后，订阅这个消息的，<br>就会怎样？。。。对咯。。收到消息。。。触发回调。  消息－订阅器</p>
+</blockquote>
+<ul>
+<li>3.消息－订阅器</li>
+</ul>
+<blockquote>
+<p>很简单，我们维护一个数组，，这个数组，就放订阅着，一旦触发notify，<br>订阅者就调用自己的update方法  </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Dep</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.subs = []</span><br><span class="line">  &#125;</span><br><span class="line">  addSub(sub)&#123;</span><br><span class="line">    <span class="keyword">this</span>.subs.push(sub)</span><br><span class="line">  &#125;</span><br><span class="line">  notify()&#123;</span><br><span class="line">    <span class="keyword">this</span>.subs.forEach(<span class="function"><span class="params">sub</span>=&gt;</span>sub.update())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>所以，每次set函数，调用的时候，我们是不是应该，触发notify，对吧。所以<br>我们把代码补充完整  </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">defineReactive</span> (<span class="params">obj, key, val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> dep = <span class="keyword">new</span> Dep()</span><br><span class="line">  <span class="keyword">var</span> childOb = observe(val)</span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">    configurable: <span class="literal">true</span>,</span><br><span class="line">    get: <span class="function"><span class="params">()</span>=&gt;</span>val,</span><br><span class="line">    set:<span class="function"><span class="params">newVal</span>=&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">var</span> value =  val</span><br><span class="line">      <span class="keyword">if</span> (newVal === value) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      val = newVal</span><br><span class="line">      childOb = observe(newVal)</span><br><span class="line">      dep.notify()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>那么问题来了。。谁是订阅者。。对，是Watcher。。一旦 dep.notify()<br>就遍历订阅者，也就是Watcher，并调用他的update()方法  </p>
+</blockquote>
+<ul>
+<li>4.实现一个 Watcher</li>
+</ul>
+<blockquote>
+<p>我们想象这个Watcher，应该用什么东西。update方法，嗯这个毋庸置疑，<br>还有呢，  </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v.$watch(<span class="string">"a"</span>,()=&gt;<span class="built_in">console</span>.log(<span class="string">"哈哈，$watch成功"</span>))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对表达式（就是那个“a”） 和 回调函数，这是最基本的，所以我们简单写写  </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Watcher</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(vm, expOrFn, cb) &#123;</span><br><span class="line">    <span class="keyword">this</span>.cb = cb</span><br><span class="line">    <span class="keyword">this</span>.vm = vm</span><br><span class="line">    <span class="comment">//此处简化.要区分fuction还是expression,只考虑最简单的expression</span></span><br><span class="line">    <span class="keyword">this</span>.expOrFn = expOrFn</span><br><span class="line">    <span class="keyword">this</span>.value = <span class="keyword">this</span>.get()</span><br><span class="line">  &#125;</span><br><span class="line">  update()&#123;</span><br><span class="line">    <span class="keyword">this</span>.run()</span><br><span class="line">  &#125;</span><br><span class="line">  run()&#123;</span><br><span class="line">    <span class="keyword">const</span>  value = <span class="keyword">this</span>.get()</span><br><span class="line">    <span class="keyword">if</span>(value !==<span class="keyword">this</span>.value)&#123;</span><br><span class="line">      <span class="keyword">this</span>.value = value</span><br><span class="line">      <span class="keyword">this</span>.cb.call(<span class="keyword">this</span>.vm)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  get()&#123;</span><br><span class="line">    <span class="comment">//此处简化。。要区分fuction还是expression</span></span><br><span class="line">    <span class="keyword">const</span> value = <span class="keyword">this</span>.vm._data[<span class="keyword">this</span>.expOrFn]</span><br><span class="line">    <span class="keyword">return</span> value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>那么问题来了，我们怎样将通过addSub(),将Watcher加进去呢。<br>我们发现var dep = new Dep() 处于闭包当中，<br>我们又发现Watcher的构造函数里会调用this.get<br>所以，我们可以在上面动动手脚，<br>修改一下Object.defineProperty的get要调用的函数，<br>判断是不是Watcher的构造函数调用，如果是，说明他就是这个属性的订阅者<br>果断将他addSub()中去，那问题来了，<br>我怎样判断他是Watcher的this.get调用的，而不是我们普通调用的呢。<br>对，在Dep定义一个全局唯一的变量，跟着思路我们写一下  </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Watcher</span> </span>&#123;</span><br><span class="line">  ....省略未改动代码....</span><br><span class="line">  get()&#123;</span><br><span class="line">    Dep.target = <span class="keyword">this</span></span><br><span class="line">    <span class="comment">//此处简化。。要区分fuction还是expression</span></span><br><span class="line">    <span class="keyword">const</span> value = <span class="keyword">this</span>.vm._data[<span class="keyword">this</span>.expOrFn]</span><br><span class="line">    Dep.target = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">return</span> value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这样的话，我们只需要在Object.defineProperty的get要调用的函数里，<br>判断有没有值，就知道到底是Watcher 在get，还是我们自己在查看赋值，如果<br>是Watcher的话就addSub(),代码补充一下  </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">defineReactive</span> (<span class="params">obj, key, val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> dep = <span class="keyword">new</span> Dep()</span><br><span class="line">  <span class="keyword">var</span> childOb = observe(val)</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">    configurable: <span class="literal">true</span>,</span><br><span class="line">    get: <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="comment">// 说明这是watch 引起的</span></span><br><span class="line">      <span class="keyword">if</span>(Dep.target)&#123;</span><br><span class="line">        dep.addSub(Dep.target)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> val</span><br><span class="line">    &#125;,</span><br><span class="line">    set:<span class="function"><span class="params">newVal</span>=&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">var</span> value =  val</span><br><span class="line">      <span class="keyword">if</span> (newVal === value) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      val = newVal</span><br><span class="line">      childOb = observe(newVal)</span><br><span class="line">      dep.notify()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最后不要忘记，在Dep.js中加上这么一句</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dep.target = <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>5.实现一个 Vue</li>
+</ul>
+<blockquote>
+<p>还差一步就大功告成了，我们要把以上代码配合Vue的$watch方法来用，<br>要watch Vue实例的属性，算了，，不要理会我在说什么，，直接看代码吧  </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Watcher <span class="keyword">from</span> <span class="string">'../watcher'</span></span><br><span class="line"><span class="keyword">import</span> &#123;observe&#125; <span class="keyword">from</span> <span class="string">"../observer"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Vue</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (options=&#123;&#125;) &#123;</span><br><span class="line">    <span class="comment">//这里简化了。。其实要merge</span></span><br><span class="line">    <span class="keyword">this</span>.$options=options</span><br><span class="line">    <span class="comment">//这里简化了。。其实要区分的</span></span><br><span class="line">    <span class="keyword">let</span> data = <span class="keyword">this</span>._data=<span class="keyword">this</span>.$options.data</span><br><span class="line">    <span class="built_in">Object</span>.keys(data).forEach(<span class="function"><span class="params">key</span>=&gt;</span><span class="keyword">this</span>._proxy(key))</span><br><span class="line">    observe(data,<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  $watch(expOrFn, cb, options)&#123;</span><br><span class="line">    <span class="keyword">new</span> Watcher(<span class="keyword">this</span>, expOrFn, cb)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _proxy(key) &#123;</span><br><span class="line">    <span class="keyword">var</span> self = <span class="keyword">this</span></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(self, key, &#123;</span><br><span class="line">      configurable: <span class="literal">true</span>,</span><br><span class="line">      enumerable: <span class="literal">true</span>,</span><br><span class="line">      get: <span class="function"><span class="keyword">function</span> <span class="title">proxyGetter</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> self._data[key]</span><br><span class="line">      &#125;,</span><br><span class="line">      set: <span class="function"><span class="keyword">function</span> <span class="title">proxySetter</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">        self._data[key] = val</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>非常简单。。两件事，observe自己的data，代理自己的data，<br>使访问自己的属性，就是访问子data的属性。。<br>截止到现在，在我们只考虑最简单情况下。。整个流程终于跑通了。。肯定会有<br>很多bug，本文主要目的是展示整个工作流，帮助读者理解。。<br>代码在<a href="https://github.com/georgebbbb...，" target="_blank" rel="noopener">https://github.com/georgebbbb...，</a><br>我是一万个不想展示自己代码。。因为很多槽点，还请见谅\</p>
+<hr>
+<ul>
+<li>参考文章：<a href="https://segmentfault.com/a/1190000004384515" target="_blank" rel="noopener">vue 源码分析之如何实现 observer 和 watcher</a></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        欢迎您阅读我的博客，您有好的建议或意见可以留言给我。：<a href="https://agxr.gitlab.io/" target="_blank" rel="external">https://agxr.gitlab.io/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://agxr.github.io">
+            <img src="/img/fireIcon.png" alt="BoyGXR">
+            BoyGXR
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object-defineProperty/">Object.defineProperty</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://agxr.github.io/2018/04/26/vue-Object_defineProerty/&title=《vue-Object.defineProperty》 — BoyGXR Blog&pic=https://agxr.github.io/img/fireIcon.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://agxr.github.io/2018/04/26/vue-Object_defineProerty/&title=《vue-Object.defineProperty》 — BoyGXR Blog&source=vue中的 Object.defineProperty
+我之前写了一篇没什么干货的文章。。并且刨了一个大坑。。今天。。打算来填一天。。并再刨一个。。哈哈不..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://agxr.github.io/2018/04/26/vue-Object_defineProerty/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue-Object.defineProperty》 — BoyGXR Blog&url=https://agxr.github.io/2018/04/26/vue-Object_defineProerty/&via=https://agxr.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://agxr.github.io/2018/04/26/vue-Object_defineProerty/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/01/pcFile-phone-see/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">browser-sync</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/25/vue-event/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">vue-event</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 暂时写在这里引入，之后放在全局 -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'true' == 'true',
+            appId: "fwwOBmAhJuGhMQkwhQsSzi7U-gzGzoHsz",
+            appKey: "MlvA5m1dMLqCMI86mPxcyXrB",
+            avatar: "mm",
+            placeholder: "欢迎您的评论与建议",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+        window.onload = function () {
+            $(".vhead").each(function (i,v) {
+                //浏览器图标
+                if($(this).find(".vsys").eq(0).text().toUpperCase().includes('CHROME')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/chrome.svg"/>');
+                }else if($(this).find(".vsys").eq(0).text().toUpperCase().includes('UC')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/UC浏览器.svg"/>');
+                }else if($(this).find(".vsys").eq(0).text().toUpperCase().includes('OPERA')){
+                    $(this).find(".vsys").eq(0).prepend('<img src="../../../../img/opera.svg"/>');
+                }
+                //系统图标
+                if($(this).find(".vsys").eq(1).text().toUpperCase().includes('WINDOWS')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/windows.svg"/>');
+                }else if($(this).find(".vsys").eq(1).text().toUpperCase().includes('APPLE')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/apple.svg"/>');
+                }else if($(this).find(".vsys").eq(1).text().toUpperCase().includes('LINUX')){
+                    $(this).find(".vsys").eq(1).prepend('<img src="../../../../img/linux.svg"/>');
+                }
+            })
+        }
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢你的支持
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wexin.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wexin.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label">换一个</span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <!-- <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>footer.license</span>
+        </p> -->
+    </div>
+    <div class="bottom">
+        <p><span>BoyGXR &copy; 2018 - 2019</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">冀ICP备19002146号</a>
+                
+            </span>
+            <span id="runtime_span" class="runtime_span"></span>
+            <!-- 全局注入js，当前网站运行时间 -->
+            <script type="text/javascript">
+            function show_runtime(){
+              window.setTimeout("show_runtime()",1000);
+              X=new Date("03/13/2018 00:00:00");
+              Y=new Date();
+              T=(Y.getTime()-X.getTime());
+              M=24*60*60*1000;
+              a=T/M;A=Math.floor(a);
+              b=(a-A)*24;B=Math.floor(b);
+              c=(b-B)*60;C=Math.floor((b-B)*60);
+              D=Math.floor((c-C)*60);
+              runtime_span.innerHTML="—— 本站勉强运行: "+A+"天"+B+"小时"+C+"分"+D+"秒 ——";
+            }
+            show_runtime();
+            </script>
+            <!-- END 全局注入js，当前网站运行时间 -->
+        </p>
+        <p>
+            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/dearzoe/hexo-theme-gruffalo" target="_blank">gruffalo</a>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://agxr.github.io/2018/04/26/vue-Object_defineProerty/&title=《vue-Object.defineProperty》 — BoyGXR Blog&pic=https://agxr.github.io/img/fireIcon.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://agxr.github.io/2018/04/26/vue-Object_defineProerty/&title=《vue-Object.defineProperty》 — BoyGXR Blog&source=vue中的 Object.defineProperty
+我之前写了一篇没什么干货的文章。。并且刨了一个大坑。。今天。。打算来填一天。。并再刨一个。。哈哈不..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://agxr.github.io/2018/04/26/vue-Object_defineProerty/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue-Object.defineProperty》 — BoyGXR Blog&url=https://agxr.github.io/2018/04/26/vue-Object_defineProerty/&via=https://agxr.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://agxr.github.io/2018/04/26/vue-Object_defineProerty/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aSW7DMBBEUd3/0g6QVQKEVg12YDY/V4YHiU+LNnu4Lnk9vtfP16u1+s7qmqtfXe9YMGDA2Jahb0u//UNYLuzmCjBgwDiA4QbZ7LdKOHavDwMGDBj9dldXWL0DAwYMGH3A1dPaj/7fgAEDxoaMrHyWFciyR/CyXBwGDBgbMrIb/8/rt/c3YMCA8fGMh7mUFDR7HNWuYMCAMZrhbuh5gUwvt/UJ8KVvDgYMGJszlFKXWw5zU80slBuhFgYMGIMYWbuxaWQ2LQEYMGCcw3CPd26TIBu/yHgwYMCYyui7Ck3y2YfpX1VDGDBgDGU0wc4d/OrDtFQWhAEDxmiGHkD1FPd5EG+GLW6uDwMGjKEMd8xC+TRrFejNVBgwYJzAyBqQ2SGvZyzvBQMGjOMZTTrqDoHpoxjSzAgMGDAGMdwg6xb39eNmeC8YMGAcw2hSWbuqZ4b7m09hwIAxmuEORryqlKakpvrfAAwYME5gKAeyJkHVt+K2SC/3DAsDBowNGVnJTG9YKsFaPzIakxcwYMAYx8jGHfTCvcJQHqXR34ABA8YghhsQm08Vqp4Aw4AB4xxGNlThtgeUwTK9hPcHHgYMGKMZ+sqOen3Kml0TBgwY8xhKkM3K+u5xs2mLwoAB4wRGtsUsaF7RkhqZMGDAOJ6hBOu+rOYeOmHAgAGj+U5zNHQbpTBgwDiB0RTr+yEMpdlwswcYMGCMZjSNgexB9AMcIQYGDBj7Mb4AyqXRPy4/dlIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, MOON: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去干哈？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '●_● 你肥来啦~';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+<!-- 全局注入js -->
+<script type="text/javascript">
+  var twoIcon = document.getElementsByClassName('fade-scale');
+  var iconLen = twoIcon.length;
+  var pathName = window.location.pathname;
+  // console.log(pathName.length)
+  if (pathName.split('/').length > 3) {
+    for (var i = 0; i < iconLen; i++) {
+      twoIcon[i].style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>
